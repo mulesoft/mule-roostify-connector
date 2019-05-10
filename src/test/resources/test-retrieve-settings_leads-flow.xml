@@ -1,0 +1,35 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+
+    <roostify:config name="Roostify_Config" address="https://sandbox.roostify.com/api" version="/v1" >
+        <roostify:connection username="9059584367234663" password="b8cd725ab1b215a6" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+    </roostify:config>
+
+    <flow name="retrievingSettingsFlow" >
+          <roostify:retrieving-settings config-ref="Roostify_Config"/>
+    </flow>
+
+    <flow name="getLeadFlow">
+    <roostify:get-lead config-ref="Roostify_Config" leadId="5420483088358081"/>
+    </flow>
+
+    <flow name="createLeadFlow" >
+        <roostify:creating-lead  config-ref="Roostify_Config">
+            <roostify:create-lead ><![CDATA[#[{
+  "b_first_name": "Alan",
+  "b_last_name": "Watts",
+  "b_email": "alanwatts@gmail.com",
+  "first_time_home_buyer": false,
+  "monthly_property_tax": 500,
+  "homeowners_insurance": 200,
+  "call_back_time": "11am-2pm",
+  "call_back_date": "04/05/2018",
+  "phone_type": "Mobile"
+}]]]></roostify:create-lead>
+        </roostify:creating-lead>
+
+    </flow>
+
+</mule>

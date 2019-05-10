@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "UpdateDocumentRequest",
+  "properties": {
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "Disneyland1233335"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "task_id": {
+      "$id": "#/properties/task_id",
+      "type": "string",
+      "title": "The Task_id Schema",
+      "default": "",
+      "examples": [
+        "7427396226288631"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "loan_application_id": {
+      "$id": "#/properties/loan_application_id",
+      "type": "string",
+      "title": "The Loan_application_id Schema",
+      "default": "",
+      "examples": [
+        "1390244480214582"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "reference_id": {
+      "$id": "#/properties/reference_id",
+      "type": "null",
+      "title": "The Reference_id Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "file_name": {
+      "$id": "#/properties/file_name",
+      "type": "string",
+      "title": "The File_name Schema",
+      "default": "",
+      "examples": [
+        "disneyland.pdf"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "file_content": {
+      "$id": "#/properties/file_content",
+      "type": "string",
+      "title": "The File_content Schema",
+      "default": "",
+      "examples": [
+        "aGVsbG8gd29ybGQ=\\n"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "remote_source_url": {
+      "$id": "#/properties/remote_source_url",
+      "type": "null",
+      "title": "The Remote_source_url Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "file_content_type": {
+      "$id": "#/properties/file_content_type",
+      "type": "string",
+      "title": "The File_content_type Schema",
+      "default": "",
+      "examples": [
+        "application/pdf"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "file_size": {
+      "$id": "#/properties/file_size",
+      "type": "integer",
+      "title": "The File_size Schema",
+      "default": 0,
+      "examples": [
+        12847
+      ]
+    }
+  }
+}

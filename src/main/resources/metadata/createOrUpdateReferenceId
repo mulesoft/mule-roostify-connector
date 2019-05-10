@@ -1,0 +1,24 @@
+{
+   "definitions": {},
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "http://example.com/root.json",
+   "type": "object",
+   "title": "ReferenceId",
+   "required": [
+     "reference_id"
+   ],
+   "properties": {
+     "reference_id": {
+       "$id": "#/properties/reference_id",
+       "type": "string",
+       "title": "The Reference_id Schema",
+       "default": "",
+       "examples": [
+         "new_reference_id"
+       ],
+       "pattern": "^(.*)$"
+     }
+   }
+}
+
+

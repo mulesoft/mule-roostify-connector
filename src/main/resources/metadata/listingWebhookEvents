@@ -1,0 +1,260 @@
+{
+  "type": "object",
+  "title": "ListingWebhookEvents",
+  "properties": {
+    "webhookEvents": {
+      "type": "array",
+      "title": "The Root Schema",
+      "items": {
+        "$id": "#/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "properties": {
+          "id": {
+            "$id": "#/items/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "4501149786573042"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "attempts": {
+            "$id": "#/items/properties/attempts",
+            "type": "integer",
+            "title": "The Attempts Schema",
+            "default": 0,
+            "examples": [
+              10
+            ]
+          },
+          "created_at": {
+            "$id": "#/items/properties/created_at",
+            "type": "string",
+            "title": "The Created_at Schema",
+            "default": "",
+            "examples": [
+              "2019-02-14T09:41:18.089-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "first_attempt_at": {
+            "$id": "#/items/properties/first_attempt_at",
+            "type": "string",
+            "title": "The First_attempt_at Schema",
+            "default": "",
+            "examples": [
+              "2019-02-14T09:41:25.122-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "last_attempt_at": {
+            "$id": "#/items/properties/last_attempt_at",
+            "type": "string",
+            "title": "The Last_attempt_at Schema",
+            "default": "",
+            "examples": [
+              "2019-02-14T20:56:49.504-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "error_message": {
+            "$id": "#/items/properties/error_message",
+            "type": "string",
+            "title": "The Error_message Schema",
+            "default": "",
+            "examples": [
+              "OpenSSL::SSL::SSLError - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "status": {
+            "$id": "#/items/properties/status",
+            "type": "string",
+            "title": "The Status Schema",
+            "default": "",
+            "examples": [
+              "failed"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "webhook_id": {
+            "$id": "#/items/properties/webhook_id",
+            "type": "string",
+            "title": "The Webhook_id Schema",
+            "default": "",
+            "examples": [
+              "2516032036482341"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "payload": {
+            "$id": "#/items/properties/payload",
+            "type": "object",
+            "title": "The Payload Schema",
+            "required": [
+              "id",
+              "account_id",
+              "url",
+              "reference_id",
+              "borrower_token",
+              "user_reference_id",
+              "export_reference_id",
+              "b_econsent_status",
+              "b_econsented_at",
+              "c_econsent_status",
+              "c_econsented_at",
+              "b_reference_id",
+              "c_reference_id",
+              "event_type",
+              "connected_account_id"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/items/properties/payload/properties/id",
+                "type": "string",
+                "title": "The Id Schema",
+                "default": "",
+                "examples": [
+                  "2633407949474783"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "account_id": {
+                "$id": "#/items/properties/payload/properties/account_id",
+                "type": "string",
+                "title": "The Account_id Schema",
+                "default": "",
+                "examples": [
+                  "9059584367234663"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "url": {
+                "$id": "#/items/properties/payload/properties/url",
+                "type": "string",
+                "title": "The Url Schema",
+                "default": "",
+                "examples": [
+                  "https://sandbox.roostify.com/"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "reference_id": {
+                "$id": "#/items/properties/payload/properties/reference_id",
+                "type": "null",
+                "title": "The Reference_id Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "borrower_token": {
+                "$id": "#/items/properties/payload/properties/borrower_token",
+                "type": "null",
+                "title": "The Borrower_token Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "user_reference_id": {
+                "$id": "#/items/properties/payload/properties/user_reference_id",
+                "type": "null",
+                "title": "The User_reference_id Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "export_reference_id": {
+                "$id": "#/items/properties/payload/properties/export_reference_id",
+                "type": "null",
+                "title": "The Export_reference_id Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "b_econsent_status": {
+                "$id": "#/items/properties/payload/properties/b_econsent_status",
+                "type": "null",
+                "title": "The B_econsent_status Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "b_econsented_at": {
+                "$id": "#/items/properties/payload/properties/b_econsented_at",
+                "type": "null",
+                "title": "The B_econsented_at Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "c_econsent_status": {
+                "$id": "#/items/properties/payload/properties/c_econsent_status",
+                "type": "null",
+                "title": "The C_econsent_status Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "c_econsented_at": {
+                "$id": "#/items/properties/payload/properties/c_econsented_at",
+                "type": "null",
+                "title": "The C_econsented_at Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "b_reference_id": {
+                "$id": "#/items/properties/payload/properties/b_reference_id",
+                "type": "null",
+                "title": "The B_reference_id Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "c_reference_id": {
+                "$id": "#/items/properties/payload/properties/c_reference_id",
+                "type": "null",
+                "title": "The C_reference_id Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "event_type": {
+                "$id": "#/items/properties/payload/properties/event_type",
+                "type": "string",
+                "title": "The Event_type Schema",
+                "default": "",
+                "examples": [
+                  "loan_application.created"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "connected_account_id": {
+                "$id": "#/items/properties/payload/properties/connected_account_id",
+                "type": "string",
+                "title": "The Connected_account_id Schema",
+                "default": "",
+                "examples": [
+                  "9059584367234663"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

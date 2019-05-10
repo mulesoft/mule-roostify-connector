@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="createAccessControlGroupFlow" doc:id="7877c298-1151-4727-812e-d6b0d156fddb" >
+		<http:listener doc:name="8081/createAccessControl" doc:id="d6223fa5-615f-41fe-8c60-26cee9784c77" config-ref="HTTP_Listener_config" path="createAccessControl"/>
+		<roostify:create-access-control doc:name="Create an access control group" doc:id="c709c3b8-5392-4fe0-8b71-e797e6941fcf" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Access control response" doc:id="604a00ed-19f3-4d08-a2ff-23b272bbfbe5" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

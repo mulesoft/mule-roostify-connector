@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "loan_application_id": {
+      "type": "string",
+      "description": "Loan Application that task will belong to."
+    },
+    "reference_id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of Task."
+    },
+    "assigned_role": {
+      "type": "string",
+      "enum": [
+        "lender",
+        "borrower",
+        "borrower_agent",
+        "title_attorney",
+        "escrow_officer",
+        "observer"
+      ],
+      "description": "The role a task is assigned to. Once assigned, only users with this role can view the task. See the [task assignment section](#task-assignment) for more detail. Can be one of the following strings:"
+    },
+    "assignee_email": {
+      "type": "string",
+      "description": "If provided, assigns the task to a particular person on the loan. If the email address does not have permission to work with the loan it will fail to make the task."
+    },
+    "notify_assignee_immediately": {
+      "type": "string",
+      "description": "Defaults to false. Sends an email to the person assigned via assignee_email letting them know the new task was created."
+    },
+    "release_automatically": {
+      "type": "string",
+      "description": "Defaults to true. Release the task to its assignee automatically. A false value allows the task to be held for loan officer approval on accounts which have pre-release speedbump enabled."
+    },
+    "restricted": {
+      "type": "string",
+      "description": "Defaults to false. Task may only be acted on or seen by the person or role it is assigned to."
+    },
+    "description": {
+      "type": "string",
+      "description": "If provided, this will be shown to both lenders and borrowers as the \"title\" of the task. If not provided, name will be shown as the \"title.\""
+    },
+    "completed_at": {
+      "type": "string",
+      "description": "ISO-8601 timestamp when the task was completed."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO-8601 timestamp when the task was created."
+    },
+    "due_at": {
+      "type": "string",
+      "description": "ISO-8601 timestamp when the task is due."
+    },
+    "updated_at": {
+      "type": "string",
+      "description": "ISO-8601 timestamp when the task was last modified."
+    },
+    "priority": {
+      "type": "string"
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Task Instructions"
+    },
+    "extension_type": {
+      "type": "string",
+      "description": "Used to determine task display type. Can be also be: `, current_year_tax_return, approval, iframe, form, view_only`"
+    },
+    "files": {
+      "type": "array"
+    },
+    "categories": {
+      "type": "string",
+      "enum": [
+        "asset"
+      ],
+      "description": "Comma seperated String, allowing a Task to be tagged with various fields"
+    },
+    "extension_type: view_only": {
+      "type": "string"
+    },
+    "extension_data": {
+      "type": "object",
+      "properties": {
+        "require_view_by_all": {
+          "type": "boolean",
+          "description": "When enabled, requires all borrowers to view the task before the task can be marked as complete."
+        }
+      }
+    }
+  },
+  "required": [
+    "loan_application_id",
+    "name"
+  ]
+}

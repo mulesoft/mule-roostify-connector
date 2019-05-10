@@ -1,0 +1,100 @@
+<mule   xmlns="http://www.mulesoft.org/schema/mule/core"  xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd" >
+
+    <roostify:config name="Roostify_Config" address="https://sandbox.roostify.com/api" version="/v1" >
+        <roostify:connection username="9059584367234663" password="b8cd725ab1b215a6" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+    </roostify:config>
+
+    <flow name="getLoanApplicationFlow">
+        <roostify:loan-applications-id config-ref="Roostify_Config" find_id="7264023802837449"/>
+    </flow>
+
+    <flow name="getLoanApplicationsFlow" >
+        <roostify:listing-loan-applications config-ref="Roostify_Config"/>
+    </flow>
+
+    <flow name="updateLoanApplicationFlow" >
+        <set-payload value='#[{
+
+	  "reference_id": "mickey_mouse",
+	  "application_type": "purchase",
+	  "loan_type": "FIXED",
+	  "amortization_term": "30",
+	  "loan_amount": 200000,
+	  "down_payment": 40000
+	}]' />
+        <roostify:updating-loan-application config-ref="Roostify_Config" update_id="5487997377154541"/>
+    </flow>
+
+    <flow name="createLoanFlow">
+        <set-payload value='#[{
+              "reference_id": "82472418",
+              "application_type": "purchase",
+              "amortization_term": "30",
+              "loan_amount": 2000000,
+              "down_payment": 40000
+	    }]'/>
+        <roostify:creating-loan-application config-ref="Roostify_Config">
+            <roostify:create-loan-request ><![CDATA[#[output application/java
+                ---
+                payload]]]></roostify:create-loan-request>
+        </roostify:creating-loan-application>
+    </flow>
+
+    <flow name="getLoanFNMFormatFlow">
+    <roostify:loan-applications-fnm config-ref="Roostify_Config" id="7264023802837449"/>
+</flow>
+    <flow name="getLoanRefIdFlow">
+        <roostify:loan-application-by-reference-id config-ref="Roostify_Config" referenceId="128976237"/>
+    </flow>
+
+    <flow name="getLoanMISMOFormatFlow">
+        <roostify:loan-applications-mismo config-ref="Roostify_Config" id="7264023802837449"/>
+    </flow>
+    <flow name="getDocumentFlow"  >
+        <roostify:retrieving-document config-ref="Roostify_Config" find_id="5527524961376661"/>
+
+    </flow>
+
+    <flow name="downloadDocumentFlow"  >
+        <roostify:downloading-document config-ref="Roostify_Config" id="2017149181828326"/>
+    </flow>
+
+    <flow name="createDocumentFlow" >
+        <set-payload value='#[{
+  "name": "Disneyland-Test",
+  "task_id": "9132027943281785",
+  "loan_application_id": "9600446672169977",
+  "reference_id": "5647382910",
+  "file_name": "disneyland.pdf",
+  "file_content": "aGVsbG8gd29ybGQ=\\n"
+}]' />
+        <roostify:creating-document config-ref="Roostify_Config"/>
+    </flow>
+
+    <flow name="getDocumentsFlow"  >
+        <roostify:listing-documents config-ref="Roostify_Config"/>
+    </flow>
+    <flow name="updateDocumentFlow"  >
+        <set-payload value='#[{
+    "task_id": "9132027943281785",
+    "loan_application_id": "9600446672169977",
+    "loan_application_reference_id": null,
+    "reference_id": "5647382910",
+    "uploaded": "2019-04-11T04:13:34.325-07:00",
+    "uploaded_at": "2019-04-11T11:13:34Z",
+    "remote_source_url": null,
+    "api_download_path": "/api/v1/documents/6076653204767547/download",
+    "name": "Disneyland-Test-112",
+    "file_name": "disneyland.pdf",
+    "content_type": "text/plain",
+    "size": null,
+    "num_of_pages": null
+}]' />
+        <roostify:update-document config-ref="Roostify_Config" id="6076653204767547"/>
+
+    </flow>
+
+</mule>

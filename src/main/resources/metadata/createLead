@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "b_first_name": {
+      "type": "string",
+      "description": "The first name of the potential Borrower"
+    },
+    "b_last_name": {
+      "type": "string",
+      "description": "The last name of the potential Borrower"
+    },
+    "b_email": {
+      "type": "string",
+      "description": "The email address of the potential Borrower"
+    },
+    "loan_type": {
+      "type": "string",
+      "description": "The type of loan."
+    },
+    "purchase_price": {
+      "type": "number",
+      "description": "The overall purchase price of the property."
+    },
+    "subject_property_zip": {
+      "type": "string",
+      "description": "The zip code of the property"
+    },
+    "credit_score": {
+      "type": "number",
+      "description": "The Borrower's credit score"
+    },
+    "loan_option: stable_payment": {
+      "type": "string",
+      "description": "The option type of the Borrower's loan"
+    },
+    "property_type: single_family": {
+      "type": "string",
+      "description": "The type of resident"
+    },
+    "property_use: primary_residence": {
+      "type": "string",
+      "description": "The use of the proprety by the borrower"
+    },
+    "military_service": {
+      "type": "boolean",
+      "description": "The Borrower's military service"
+    },
+    "first_time_home_buyer": {
+      "type": "boolean",
+      "description": "Whether or not this is the first property the Borrower has purchased"
+    },
+    "monthly_property_tax": {
+      "type": "number",
+      "description": "How much the property tax would be for the Borrower"
+    },
+    "homeowners_insurance": {
+      "type": "number",
+      "description": "How much the homeowner's insurance would be for the Borrower"
+    },
+    "monthly_hoa": {
+      "type": "number",
+      "description": "If any, how much the monthly Home Owner's Association fees would be"
+    },
+    "property_value": {
+      "type": "number",
+      "description": "The Borrower's current property value (if refinancing) or the value of the property (if purchasing)"
+    },
+    "desired_cashout_amount": {
+      "type": "number",
+      "description": "How much cash the Borrower would like to receive from a cashout refinance."
+    },
+    "down_payment": {
+      "type": "number",
+      "description": "The initial payment by the borrower, applied to the purchase of a home. The difference between the down payment and the sales price is the mortgage amount."
+    },
+    "mortgage_balance": {
+      "type": "number",
+      "description": "A mortgage balance is the full amount owed at any period of time during the duration of the mortgage, and is the sum of the remaining principal owing and accrued interest."
+    },
+    "product_name": {
+      "type": "string",
+      "description": "The name of the mortgage loan product available to a borrower."
+    },
+    "product_property_tax": {
+      "type": "number",
+      "description": "The amount a borrower is required to pay each month towards the property tax"
+    },
+    "product_principal_and_interest": {
+      "type": "number",
+      "description": "The amount a borrower is required to pay each month towards the principal and interest of a loan"
+    },
+    "product_home_insurance": {
+      "type": "number",
+      "description": "The amount a borrower is required to pay each month for homeowner?s insurance"
+    },
+    "product_pmi": {
+      "type": "number",
+      "description": "Private Mortgage Insurance is required by lenders when a down payment is less than 20%."
+    },
+    "product_rate": {
+      "type": "number",
+      "description": "The percentage used to calculate the interest charge for a loan."
+    },
+    "product_term": {
+      "type": "number",
+      "description": "The length of time the borrower will make mortgage payments until the loan is paid in full."
+    },
+    "product_product_type": {
+      "type": "number",
+      "description": "The type of mortgage available to a borrower. For example: Purchase, Refinance, or Cashout Refinance."
+    },
+    "product_monthly_payment": {
+      "type": "number",
+      "description": "The amount a borrower is required to pay each month until the loan is paid off."
+    },
+    "product_code": {
+      "type": "number",
+      "description": "Lender identification code associated to particular mortgage product."
+    },
+    "product_closing_cost": {
+      "type": "number",
+      "description": "Fees, collected at closing, that cover the costs of a real estate transaction."
+    },
+    "product_discount": {
+      "type": "number",
+      "description": "A fee, paid by the borrower to the lender, that covers prepaid interest on a mortgage, resulting in a lower lifetime interest rate of the mortgage."
+    },
+    "product_apr": {
+      "type": "number",
+      "description": "All of the interest and fees paid, over the life of the loan, expressed as an annual percentage."
+    },
+    "call_back_time": {
+      "type": "string",
+      "description": "Time provided by potential borrower when a Loan Officer can contact."
+    },
+    "call_back_date": {
+      "type": "string",
+      "description": "Date provided by potential borrower when a Loan Officer can contact."
+    },
+    "phone_type": {
+      "type": "string",
+      "description": "Type of phone provided by the potential borrower to contact on."
+    },
+    "mlo_token": {
+      "type": "string",
+      "description": "Stores the loan officer information (ID) related to the generated lead."
+    }
+  }
+}

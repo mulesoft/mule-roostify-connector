@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "GetUserSettings",
+  "properties": {
+    "user_email": {
+      "$id": "#/properties/user_email",
+      "type": "string",
+      "title": "The User_email Schema",
+      "default": "",
+      "examples": [
+        "a.mahmood@salesforce.com"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "user_settings": {
+      "$id": "#/properties/user_settings",
+      "type": "object",
+      "title": "The User_settings Schema"
+    },
+    "integration_settings": {
+      "$id": "#/properties/integration_settings",
+      "type": "object",
+      "title": "The Integration_settings Schema"
+    }
+  }
+}

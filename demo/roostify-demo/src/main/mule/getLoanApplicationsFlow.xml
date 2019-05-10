@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+
+	<flow name="getLoanApplicationsFlow" doc:id="9d64040c-c609-40c5-88a4-17894ab655fa" >
+		<http:listener doc:name="8081/getLoans" doc:id="460ea459-414d-4092-9327-d1ed2c3e7da5" path="getLoans" config-ref="HTTP_Listener_config"/>
+		<roostify:listing-loan-applications doc:name="Listing your loan applications" doc:id="a9d041db-b58a-4b25-ae99-ae482bec885d" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Output response" doc:id="aebf7bd2-3829-43de-9905-2c00b3afc169" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

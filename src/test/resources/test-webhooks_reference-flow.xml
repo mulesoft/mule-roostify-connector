@@ -1,0 +1,42 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+
+    <roostify:config name="Roostify_Config" address="https://sandbox.roostify.com/api" version="/v1" >
+        <roostify:connection username="9059584367234663" password="b8cd725ab1b215a6" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+    </roostify:config>
+
+    <flow name="createWebhookFlow" >
+        <roostify:creating-webhook config-ref="Roostify_Config">
+            <roostify:webhook-body ><![CDATA[#[{
+  "url": "https://your-service.example.com/callback-handler",
+  "event_type": "loan_application.created"
+}]]]></roostify:webhook-body>
+        </roostify:creating-webhook>
+    </flow>
+    <flow name="getWebhooksFlow" >
+        <roostify:listing-webhooks config-ref="Roostify_Config"/>
+    </flow>
+    <flow name="getWebhookFlow"  >
+        <roostify:retrieving-webhook config-ref="Roostify_Config" webhookId="#[payload]"/>
+    </flow>
+
+    <flow name="deleteWebhookFlow">
+        <set-payload value='{
+    "id": "3205160950926864",
+    "url": "https://your-service.example.com/callback-handler",
+    "event_type": "loan_application.created",
+    "created": "2019-05-08T06:33:40.612-07:00",
+    "created_at": "2019-05-08T13:33:40Z"
+}'/>
+    </flow>
+
+    <flow name="createOrUpdateReferenceIdFlowFlow" >
+        <roostify:create-update-reference-id config-ref="Roostify_Config" loan_id="7272507693592323">
+            <roostify:reference-body ><![CDATA[#[{
+  "reference_id": "128976237"
+}]]]></roostify:reference-body>
+        </roostify:create-update-reference-id>
+    </flow>
+</mule>

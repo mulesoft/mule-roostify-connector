@@ -1,0 +1,40 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+
+    <roostify:config name="Roostify_Config" address="https://sandbox.roostify.com/api" version="/v1" >
+        <roostify:connection username="9059584367234663" password="b8cd725ab1b215a6" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+    </roostify:config>
+    <flow name="createAccessControlGroupFlow">
+
+        <set-payload value='#[{
+  "name": "My Acg Group" ,
+  "system_name": "my_acg_group11" ++ payload,
+  "account_permissions": {
+    "access_control": "none",
+    "configuration": "read_only",
+    "lead": "read_only",
+    "report": "read_only",
+    "user": "none"
+  }
+}]'/>
+        <roostify:create-access-control config-ref="Roostify_Config"/>
+
+    </flow>
+
+    <flow name="updateAccessControlGroupFlow" >
+        <set-payload value='#[{
+  "name": "My Acg Group",
+  "system_name": "my_acg_group299",
+  "account_permissions": {
+    "access_control": "none",
+    "configuration": "read_only",
+    "lead": "read_only",
+    "report": "read_only",
+    "user": "none"
+  }
+}]'  />
+        <roostify:update-access-control config-ref="Roostify_Config" id="2777468787250358"/>
+</flow>
+</mule>

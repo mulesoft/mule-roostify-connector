@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getIntegrationServcieFlow" doc:id="f3c33ca6-5aee-4744-ad01-34587d319038" >
+		<http:listener doc:name="8081/getIntegrationService" doc:id="6cb57ecb-c860-431d-9f7a-ca3c8eaf1139" config-ref="HTTP_Listener_config" path="getIntegrationService"/>
+		<roostify:retrieving-settings doc:name="Retrieve an integration service setting fields and values" doc:id="cc586a9a-9fa3-4fa5-8e5c-03da1150b4f0" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Output Response" doc:id="be8947e5-e0c3-4963-9a21-2aee58bd602b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

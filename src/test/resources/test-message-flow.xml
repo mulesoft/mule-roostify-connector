@@ -1,0 +1,32 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+
+    <roostify:config name="Roostify_Config" address="https://sandbox.roostify.com/api" version="/v1" >
+        <roostify:connection username="9059584367234663" password="b8cd725ab1b215a6" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+
+    </roostify:config>
+
+    <flow name="getMessageFlow">
+        <roostify:retrieving-message config-ref="Roostify_Config" messageId="5451"/>
+    </flow>
+
+    <flow name="getMessagesFlow">
+        <roostify:get-messages config-ref="Roostify_Config"/>
+    </flow>
+
+    <flow name="createMessageFlow">
+        <roostify:creating-message  config-ref="Roostify_Config">
+            <roostify:message ><![CDATA[#[{
+  "loan_application_id": "7264023802837449",
+  "content": "If it makes you happy, it can't be that bad.",
+  "sender_email": "ddone@divad.io",
+  "subject": "To the great unknown"
+}]]]></roostify:message>
+        </roostify:creating-message>
+    </flow>
+
+
+
+</mule>

@@ -1,0 +1,23 @@
+{
+   "definitions": {},
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "http://example.com/root.json",
+   "type": "object",
+   "title": "Lead Id",
+   "required": [
+     "id"
+   ],
+   "properties": {
+     "id": {
+       "$id": "#/properties/id",
+       "type": "string",
+       "default": "",
+       "examples": [
+         "new_reference_id"
+       ],
+       "pattern": "^(.*)$"
+     }
+   }
+}
+
+

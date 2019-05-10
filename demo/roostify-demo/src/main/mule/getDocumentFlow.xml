@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getDocumentFlow" doc:id="d0c354aa-95c7-45a2-bf55-b1b5782565b6" >
+		<http:listener doc:name="8081/getDocument" doc:id="8c14f4ec-50e2-45ec-a7cc-018cf88cf311" config-ref="HTTP_Listener_config" path="getDocument"/>
+		<roostify:retrieving-document doc:name="Retrieve a document" doc:id="298ff8b3-ce4e-4058-8e03-dea780d4993c" config-ref="Roostify_Config" find_id="9432899521196443"/>
+		<ee:transform doc:name="Document response" doc:id="864036a3-9dc3-47cc-ad6a-43a192948642" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

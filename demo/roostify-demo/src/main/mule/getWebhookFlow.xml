@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getWebhookFlow" doc:id="04640bb4-d940-417d-afac-7b9f5527f1ad" >
+		<http:listener doc:name="8081/getWebhook" doc:id="cea57e91-a45e-43ed-9189-f7c7846b0eab" config-ref="HTTP_Listener_config" path="getWebhook"/>
+		<roostify:retrieving-webhook doc:name="Retrieve a webhook" doc:id="c2af4513-ec1f-4ced-bad3-f10e2ad8aae6" config-ref="Roostify_Config" webhookId="7640943842313778"/>
+		<ee:transform doc:name="Webhook response" doc:id="a0c4ede3-8d38-4f86-8e6d-24921b77e72e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

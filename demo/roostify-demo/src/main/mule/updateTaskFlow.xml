@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="updateTaskFlow" doc:id="bd1f5d09-98ed-4321-9723-68a6f43397c6" >
+		<http:listener doc:name="8081/updateTask" doc:id="83765d54-d0bc-41ba-8e73-43a9233e8021" config-ref="HTTP_Listener_config" path="updateTask"/>
+		<roostify:update-task doc:name="Update a task by task id" doc:id="332d3400-0017-46ab-a7af-4a12e0cf78a8" config-ref="Roostify_Config" taskId="7555341730332047"/>
+		<ee:transform doc:name="Update task response" doc:id="00942134-b237-4a2d-a74c-0003309c59e6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

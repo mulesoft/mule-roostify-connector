@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="updateDocumentFlow" doc:id="b28e57f3-2e2f-4cf5-9747-16eeb005655c" >
+		<http:listener doc:name="8081/updateDocument" doc:id="0e0ed3d9-619b-43bd-9edf-18fcd6efd258" config-ref="HTTP_Listener_config" path="updateDocument"/>
+		<roostify:update-document doc:name="Update a document" doc:id="6471c8a5-0248-477b-9d78-52d75360e523" config-ref="Roostify_Config" id="6076653204767547"/>
+		<ee:transform doc:name="Update document response" doc:id="2b88eb19-8bd6-4ed7-9661-35aa9beac0c0">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

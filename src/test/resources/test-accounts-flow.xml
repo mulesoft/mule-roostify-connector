@@ -1,0 +1,20 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+
+<roostify:config name="Roostify_Config" address="https://sandbox.roostify.com/api" version="/v1" >
+        <roostify:connection username="9059584367234663" password="b8cd725ab1b215a6" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+
+</roostify:config>
+
+    <flow name="getAccountsFlow"  >
+        <roostify:listing-accounts config-ref="Roostify_Config" page="1" count="100"/>
+    </flow>
+    <flow name="getAccountFlow" >
+        <roostify:retrieving-account config-ref="Roostify_Config" id="9059584367234663" />
+        <set-payload value="#[payload.id]" mimeType="application/json"/>
+
+    </flow>
+
+</mule>

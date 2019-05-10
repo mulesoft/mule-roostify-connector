@@ -1,0 +1,61 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+
+    <roostify:config name="Roostify_Config" address="https://sandbox.roostify.com/api" version="/v1" >
+        <roostify:connection username="9059584367234663" password="b8cd725ab1b215a6" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+    </roostify:config>
+
+
+
+    <flow name="createUserFlow">
+        <set-payload value='#[{
+  "user_role": "borrower",
+  "job_title": "assistant",
+  "admin": true,
+  "loan_application_id": "7890123456",
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": vars.email,
+  "home_phone": "2125551234",
+  "license_number": "123456789",
+  "send_invite": true,
+  "account_id": "9059584367234663",
+  "account_reference_id": "HIJKLMNO",
+  "reference_id": "ABCDJFH",
+  "sso_reference_id": "open-sez-a-me"
+}]'/>
+        <roostify:create-user  config-ref="Roostify_Config"/>
+    </flow>
+
+    <flow name="deactivateUserFlow"  >
+        <roostify:cancel-order config-ref="Roostify_Config" id='#[vars.id]'/>
+    </flow>
+    <flow name="activateUserFlow"  >
+        <roostify:activate-user config-ref="Roostify_Config" id="#[vars.id]"/>
+    </flow>
+
+    <flow name="updateUserFlow"  >
+        <set-payload value='#[{
+  "user_role": "borrower",
+  "job_title": "assistant",
+  "admin": false,
+  "loan_application_id": null,
+  "first_name": "John2",
+  "last_name": "DoWnTest",
+  "email": "jda1234@example.com",
+  "home_phone": "2125551234",
+  "license_number": "123456789"
+}]' />
+        <roostify:update-user config-ref="Roostify_Config" id="3751897642312789"/>
+    </flow>
+
+    <flow name="getUsersFlow" >
+        <roostify:listing-users config-ref="Roostify_Config"/>
+    </flow>
+
+    <flow name="getUserFlow" >
+        <roostify:retrieving-user config-ref="Roostify_Config" userId="3751897642312789"/>
+    </flow>
+</mule>

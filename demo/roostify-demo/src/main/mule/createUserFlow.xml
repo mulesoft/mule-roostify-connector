@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="createUserFlow" doc:id="854756a4-52a5-4e4f-b97a-63774dc47b5a" >
+		<http:listener doc:name="8081/createUser" doc:id="fe731e6b-a6e9-4e2a-a7aa-5c3b3f015c10" config-ref="HTTP_Listener_config" path="createUser"/>
+		<roostify:create-user doc:name="Create a user" doc:id="79b34f91-4332-4152-adf2-f23b1dd21bc4" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="User Response" doc:id="91a36b24-04da-404f-a425-e181db2e1375" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

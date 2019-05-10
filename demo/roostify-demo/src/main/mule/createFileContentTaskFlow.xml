@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="createFileContentTaskFlow" doc:id="b4dd5b4d-9fcb-49be-95c4-1051b8bc66ff" >
+		<http:listener doc:name="8081/createFileContentTask" doc:id="2d4d2ad8-9162-438b-8b49-390c3c867f6e" config-ref="HTTP_Listener_config" path="createFileContentTask"/>
+		<roostify:creating-file-content-task doc:name="Creating a task from file content task" doc:id="640412f1-11c8-48d5-b222-59f124bff28c" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Transform Message" doc:id="879a561d-2936-46e4-8893-9d2a402416c8" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

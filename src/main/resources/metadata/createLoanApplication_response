@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "CreateLoanResponse",
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "The Id Schema",
+      "default": "",
+      "examples": [
+        "3290774615000125"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "account_id": {
+      "$id": "#/properties/account_id",
+      "type": "string",
+      "title": "The Account_id Schema",
+      "default": "",
+      "examples": [
+        "9059584367234663"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "reference_id": {
+      "$id": "#/properties/reference_id",
+      "type": "string",
+      "title": "The Reference_id Schema",
+      "default": "",
+      "examples": [
+        "82472418"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "export_reference_id": {
+      "$id": "#/properties/export_reference_id",
+      "type": "null",
+      "title": "The Export_reference_id Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "title": "The Url Schema",
+      "default": "",
+      "examples": [
+        "https://sandbox.roostify.com/la/3290774615000125/start"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "pre_approval": {
+      "$id": "#/properties/pre_approval",
+      "type": "null",
+      "title": "The Pre_approval Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "borrower_token": {
+      "$id": "#/properties/borrower_token",
+      "type": "null",
+      "title": "The Borrower_token Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "coborrower_token": {
+      "$id": "#/properties/coborrower_token",
+      "type": "null",
+      "title": "The Coborrower_token Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "archived_at": {
+      "$id": "#/properties/archived_at",
+      "type": "null",
+      "title": "The Archived_at Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "title": "The Created_at Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T18:55:13Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "started_at": {
+      "$id": "#/properties/started_at",
+      "type": "null",
+      "title": "The Started_at Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "updated_at": {
+      "$id": "#/properties/updated_at",
+      "type": "string",
+      "title": "The Updated_at Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T18:55:13Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "completed_at": {
+      "$id": "#/properties/completed_at",
+      "type": "null",
+      "title": "The Completed_at Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "submitted_at": {
+      "$id": "#/properties/submitted_at",
+      "type": "null",
+      "title": "The Submitted_at Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "archived": {
+      "$id": "#/properties/archived",
+      "type": "null",
+      "title": "The Archived Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "created": {
+      "$id": "#/properties/created",
+      "type": "string",
+      "title": "The Created Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T10:55:13.014-08:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "started": {
+      "$id": "#/properties/started",
+      "type": "null",
+      "title": "The Started Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "updated": {
+      "$id": "#/properties/updated",
+      "type": "string",
+      "title": "The Updated Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T10:55:13.439-08:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "completed": {
+      "$id": "#/properties/completed",
+      "type": "null",
+      "title": "The Completed Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "submitted": {
+      "$id": "#/properties/submitted",
+      "type": "null",
+      "title": "The Submitted Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    }
+  }
+}

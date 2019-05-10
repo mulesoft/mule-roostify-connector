@@ -1,0 +1,232 @@
+{
+  "type": "object",
+  "title": "ListingMessages",
+  "properties": {
+    "messages": {
+      "type": "array",
+      "title": "The Root Schema",
+      "items": {
+        "$id": "#/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "properties": {
+          "id": {
+            "$id": "#/items/properties/id",
+            "type": "integer",
+            "title": "The Id Schema",
+            "default": 0,
+            "examples": [
+              4969
+            ]
+          },
+          "thread_id": {
+            "$id": "#/items/properties/thread_id",
+            "type": "null",
+            "title": "The Thread_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "parent_id": {
+            "$id": "#/items/properties/parent_id",
+            "type": "null",
+            "title": "The Parent_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "workflow_id": {
+            "$id": "#/items/properties/workflow_id",
+            "type": "null",
+            "title": "The Workflow_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "task_id": {
+            "$id": "#/items/properties/task_id",
+            "type": "null",
+            "title": "The Task_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "from_id": {
+            "$id": "#/items/properties/from_id",
+            "type": "null",
+            "title": "The From_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "to_id": {
+            "$id": "#/items/properties/to_id",
+            "type": "null",
+            "title": "The To_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "subject": {
+            "$id": "#/items/properties/subject",
+            "type": "string",
+            "title": "The Subject Schema",
+            "default": "",
+            "examples": [
+              "To the great unknown"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "body": {
+            "$id": "#/items/properties/body",
+            "type": "string",
+            "title": "The Body Schema",
+            "default": "",
+            "examples": [
+              "<p>If it makes you happy, it can't be that bad.</p>"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "created_at": {
+            "$id": "#/items/properties/created_at",
+            "type": "string",
+            "title": "The Created_at Schema",
+            "default": "",
+            "examples": [
+              "2019-02-13T10:41:28.182-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "updated_at": {
+            "$id": "#/items/properties/updated_at",
+            "type": "string",
+            "title": "The Updated_at Schema",
+            "default": "",
+            "examples": [
+              "2019-02-13T10:41:28.182-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "token": {
+            "$id": "#/items/properties/token",
+            "type": "string",
+            "title": "The Token Schema",
+            "default": "",
+            "examples": [
+              "8666994323172763"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "service_id": {
+            "$id": "#/items/properties/service_id",
+            "type": "null",
+            "title": "The Service_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "reference_id": {
+            "$id": "#/items/properties/reference_id",
+            "type": "null",
+            "title": "The Reference_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "account_id": {
+            "$id": "#/items/properties/account_id",
+            "type": "integer",
+            "title": "The Account_id Schema",
+            "default": 0,
+            "examples": [
+              69
+            ]
+          },
+          "loan_application_id": {
+            "$id": "#/items/properties/loan_application_id",
+            "type": "integer",
+            "title": "The Loan_application_id Schema",
+            "default": 0,
+            "examples": [
+              1518
+            ]
+          },
+          "to_emails": {
+            "$id": "#/items/properties/to_emails",
+            "type": "string",
+            "title": "The To_emails Schema",
+            "default": "",
+            "examples": [
+              "david@divad.io"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "cc_emails": {
+            "$id": "#/items/properties/cc_emails",
+            "type": "null",
+            "title": "The Cc_emails Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "bcc_emails": {
+            "$id": "#/items/properties/bcc_emails",
+            "type": "null",
+            "title": "The Bcc_emails Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "from_email": {
+            "$id": "#/items/properties/from_email",
+            "type": "string",
+            "title": "The From_email Schema",
+            "default": "",
+            "examples": [
+              "no-reply@deliver.roostify.com"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "status": {
+            "$id": "#/items/properties/status",
+            "type": "null",
+            "title": "The Status Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "response": {
+            "$id": "#/items/properties/response",
+            "type": "null",
+            "title": "The Response Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "type_id": {
+            "$id": "#/items/properties/type_id",
+            "type": "string",
+            "title": "The Type_id Schema",
+            "default": "",
+            "examples": [
+              "api_generated_message"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "CreateMessageResponse",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of the message."
+    },
+    "sender_email": {
+      "type": "string",
+      "description": "Email address of the sender."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject of the message. Defaults to 'Alert'."
+    },
+    "content": {
+      "type": "string",
+      "description": "The message content. No max length."
+    },
+    "loan_application_id": {
+      "type": "string",
+      "description": "Loan application ID."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO-8601 timestamp when the message was created."
+    }
+  }
+}
