@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="createViewOnlyTaskFlow" doc:id="57316a56-e401-4032-bd3f-8535cf47fec5" >
+		<http:listener doc:name="8081/createViewOnlyTask" doc:id="c2ee659d-2476-4b70-897c-daa89281aa80" config-ref="HTTP_Listener_config" path="createViewOnlyTask"/>
+		<roostify:creating-view-only-task doc:name="Creating a task from view only task" doc:id="62b54e5d-a8dd-49ae-be95-cf302ea20a18" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Response body" doc:id="f4eff53b-67c8-4510-ad68-6e3f36b27f2f" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

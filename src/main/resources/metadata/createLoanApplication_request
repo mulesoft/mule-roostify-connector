@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "CreateLoanRequest",
+  "properties": {
+    "reference_id": {
+      "$id": "#/properties/reference_id",
+      "type": "string",
+      "title": "The Reference_id Schema",
+      "default": "",
+      "examples": [
+        "82472418"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "application_type": {
+      "$id": "#/properties/application_type",
+      "type": "string",
+      "title": "The Application_type Schema",
+      "default": "",
+      "examples": [
+        "purchase"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "amortization_term": {
+      "$id": "#/properties/amortization_term",
+      "type": "string",
+      "title": "The Amortization_term Schema",
+      "default": "",
+      "examples": [
+        "30"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "loan_amount": {
+      "$id": "#/properties/loan_amount",
+      "type": "integer",
+      "title": "The Loan_amount Schema",
+      "default": 0,
+      "examples": [
+        2000000
+      ]
+    },
+    "down_payment": {
+      "$id": "#/properties/down_payment",
+      "type": "integer",
+      "title": "The Down_payment Schema",
+      "default": 0,
+      "examples": [
+        40000
+      ]
+    }
+  }
+}

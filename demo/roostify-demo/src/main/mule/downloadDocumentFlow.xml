@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="downloadDocumentFlow" doc:id="4c54eefa-fcc8-4a08-acc5-758e95dcafa4" >
+		<http:listener doc:name="8081/downloadDocument" doc:id="cee41f4d-bab9-4d50-a15b-6b10af840d7c" config-ref="HTTP_Listener_config" path="downloadDocument"/>
+		<roostify:downloading-document doc:name="Download a document" doc:id="e073607b-143f-49fd-928c-605c9f00f853" config-ref="Roostify_Config" id="5527524961376661"/>
+		<ee:transform doc:name="Response" doc:id="2f0a8805-3f1d-423b-a8a1-10127b933a3c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

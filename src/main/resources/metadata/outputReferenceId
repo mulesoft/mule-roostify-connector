@@ -1,0 +1,21 @@
+{
+   "definitions": {},
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "$id": "http://example.com/root.json",
+   "type": "object",
+   "title": "ResponseBody",
+   "required": [
+    "message"
+ ],
+   "properties": {
+     "message": {
+       "$id": "#/properties/message",
+       "type": "string",
+       "default": "",
+
+       "pattern": "^(.*)$"
+     }
+  }
+}
+
+

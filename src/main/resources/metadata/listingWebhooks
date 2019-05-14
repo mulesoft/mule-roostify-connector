@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "title": "ListingWebhooks",
+  "properties": {
+    "webhooks": {
+      "type": "array",
+      "title": "The Root Schema",
+      "items": {
+        "$id": "#/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "properties": {
+          "id": {
+            "$id": "#/items/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "5742175780225679"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "url": {
+            "$id": "#/items/properties/url",
+            "type": "string",
+            "title": "The Url Schema",
+            "default": "",
+            "examples": [
+              "https://your-service.example.com/callback-handler"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "event_type": {
+            "$id": "#/items/properties/event_type",
+            "type": "string",
+            "title": "The Event_type Schema",
+            "default": "",
+            "examples": [
+              "loan_application.created"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "created": {
+            "$id": "#/items/properties/created",
+            "type": "string",
+            "title": "The Created Schema",
+            "default": "",
+            "examples": [
+              "2019-02-07T10:53:41.821-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "created_at": {
+            "$id": "#/items/properties/created_at",
+            "type": "string",
+            "title": "The Created_at Schema",
+            "default": "",
+            "examples": [
+              "2019-02-07T18:53:41Z"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}

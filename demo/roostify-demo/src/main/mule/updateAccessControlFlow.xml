@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="updateAccessControlFlow" doc:id="407d6e1b-8b5a-4afb-a9a2-7cf3696d1adb" >
+		<http:listener doc:name="8081/updateAccessControl" doc:id="75d46f4a-93dd-4e42-a847-9aca2f8fcb34" config-ref="HTTP_Listener_config" path="updateAccessControl"/>
+		<set-payload value='#[{
+  "name": "My Access Group",
+  "system_name": "my_acg_group_2",
+  "account_permissions": {
+    "access_control": "none",
+    "configuration": "read_only",
+    "lead": "read_only",
+    "report": "read_only",
+    "user": "read_only"
+  }
+}]' doc:name="Access control request body" doc:id="a91d4cac-bda3-4a8f-a304-f1f7d9e39ed4" />
+		<ee:transform doc:name="Response body" doc:id="a9e5c142-ab47-4306-bfda-dbaeb766f1ec" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

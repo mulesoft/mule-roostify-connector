@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="createRegularTaskFlow" doc:id="2adb11e3-2b18-4616-896f-a94eec7fb09d" >
+		<http:listener doc:name="8081/createRegularTask" doc:id="0d5c228d-884e-4f19-9445-c898a3bb6e8d" config-ref="HTTP_Listener_config" path="createRegularTask"/>
+		<roostify:creating-regular-task doc:name="Creating a task from regular task" doc:id="a3662f97-2f08-4580-a7e4-9b343fae4318" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Response" doc:id="7d8397e1-1a70-4ed7-95ad-75b888de8b18" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "UpdateTaskRequest",
+  "properties": {
+    "completed_at": {
+      "$id": "#/properties/completed_at",
+      "type": "string",
+      "title": "The Completed_at Schema",
+      "default": "",
+      "examples": [
+        "2020-04-05 09:20:20"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "The Description Schema",
+      "default": "",
+      "examples": [
+        "Title of TaskNNNNNNNNNNNNNNNNNNN"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "instructions": {
+      "$id": "#/properties/instructions",
+      "type": "string",
+      "title": "The Instructions Schema",
+      "default": "",
+      "examples": [
+        "Please upload the Foo PDF NNNNNNNNNN"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

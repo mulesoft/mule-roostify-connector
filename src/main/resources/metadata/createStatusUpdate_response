@@ -1,0 +1,88 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "CreateStatusUpdateResponse",
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "The Id Schema",
+      "default": "",
+      "examples": [
+        "7121321946350249"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "loan_application_id": {
+      "$id": "#/properties/loan_application_id",
+      "type": "string",
+      "title": "The Loan_application_id Schema",
+      "default": "",
+      "examples": [
+        "7506275271207897"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "user_id": {
+      "$id": "#/properties/user_id",
+      "type": "null",
+      "title": "The User_id Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "content": {
+      "$id": "#/properties/content",
+      "type": "string",
+      "title": "The Content Schema",
+      "default": "",
+      "examples": [
+        "Hello, world 5!"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "title": "The Created_at Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T18:26:44Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "updated_at": {
+      "$id": "#/properties/updated_at",
+      "type": "string",
+      "title": "The Updated_at Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T18:26:44Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "created": {
+      "$id": "#/properties/created",
+      "type": "string",
+      "title": "The Created Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T10:26:44.190-08:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "updated": {
+      "$id": "#/properties/updated",
+      "type": "string",
+      "title": "The Updated Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T10:26:44.190-08:00"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

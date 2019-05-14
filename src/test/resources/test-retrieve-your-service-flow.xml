@@ -1,0 +1,15 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+
+    <configuration-properties file="application.properties" />
+    <roostify:config name="Roostify_Config" address="${address}" version="${version}" >
+        <roostify:connection username="${username}" password="${password}" connectionIdleTimeout="600000" connectionTimeout="600000"/>
+    </roostify:config>
+
+    <flow name="retrieveYourServiceFlow" >
+        <roostify:retrieve-yur-service config-ref="Roostify_Config" />
+    </flow>
+
+</mule>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getUserFlow" doc:id="c0cf2df8-2087-408f-85a4-b5d26d5675ec" >
+		<http:listener doc:name="8081/getUser" doc:id="33f5972a-b219-4b42-8d1f-30c72696f5d6" config-ref="HTTP_Listener_config" path="getUser"/>
+		<roostify:retrieving-user doc:name="Retrieve a user" doc:id="69320b19-f2e5-404a-9a36-35f1f9a60040" config-ref="Roostify_Config" userId="3751897642312789"/>
+		<ee:transform doc:name="Get user response" doc:id="f6dc90e5-89d8-43a7-933b-a815f0f41b12" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

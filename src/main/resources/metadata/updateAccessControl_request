@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "UpdateAccessControlRequest",
+  "properties": {
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "My Acg Group24999"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "system_name": {
+      "$id": "#/properties/system_name",
+      "type": "string",
+      "title": "The System_name Schema",
+      "default": "",
+      "examples": [
+        "my_acg_group24999"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "account_permissions": {
+      "$id": "#/properties/account_permissions",
+      "type": "object",
+      "title": "The Account_permissions Schema",
+      "required": [
+        "access_control",
+        "configuration",
+        "lead",
+        "report",
+        "user"
+      ],
+      "properties": {
+        "access_control": {
+          "$id": "#/properties/account_permissions/properties/access_control",
+          "type": "string",
+          "title": "The Access_control Schema",
+          "default": "",
+          "examples": [
+            "none"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "configuration": {
+          "$id": "#/properties/account_permissions/properties/configuration",
+          "type": "string",
+          "title": "The Configuration Schema",
+          "default": "",
+          "examples": [
+            "read_only"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "lead": {
+          "$id": "#/properties/account_permissions/properties/lead",
+          "type": "string",
+          "title": "The Lead Schema",
+          "default": "",
+          "examples": [
+            "read_only"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "report": {
+          "$id": "#/properties/account_permissions/properties/report",
+          "type": "string",
+          "title": "The Report Schema",
+          "default": "",
+          "examples": [
+            "read_only"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "user": {
+          "$id": "#/properties/account_permissions/properties/user",
+          "type": "string",
+          "title": "The User Schema",
+          "default": "",
+          "examples": [
+            "none"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    }
+  }
+}

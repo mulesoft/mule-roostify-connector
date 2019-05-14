@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getWebhookEventsFlow" doc:id="4fab74a1-680b-4aca-aabc-2f4fd6399cf0" >
+		<http:listener doc:name="8081/getWebhookEvents" doc:id="200ffa88-7f97-4c1f-b4c6-fa5a9407973f" config-ref="HTTP_Listener_config" path="getWebhookEvents"/>
+		<roostify:listing-webhook-events doc:name="Listing your webhook events" doc:id="4e46c2f4-57be-4c55-9f15-8aea625f541d" config-ref="Roostify_Config" created="2019-04-01T00:00:01-07:00..2019-04-24T23:59:00-07:00"/>
+		<ee:transform doc:name="Webhook events response" doc:id="0ab28378-5dc1-4b58-adcc-a997b6537658" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

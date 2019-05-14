@@ -1,0 +1,29 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "CreateStatusUpdateRequest",
+  "properties": {
+    "loan_application_id": {
+      "$id": "#/properties/loan_application_id",
+      "type": "string",
+      "title": "The Loan_application_id Schema",
+      "default": "",
+      "examples": [
+        "912345870"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "update_content": {
+      "$id": "#/properties/update_content",
+      "type": "string",
+      "title": "The Update_content Schema",
+      "default": "",
+      "examples": [
+        "Hello, world!"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

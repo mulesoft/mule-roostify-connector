@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "title": "ListingDocuments",
+  "properties": {
+    "documents": {
+      "type": "array",
+      "title": "The Root Schema",
+      "items": {
+        "$id": "#/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "properties": {
+          "id": {
+            "$id": "#/items/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "2017149181828326"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "task_id": {
+            "$id": "#/items/properties/task_id",
+            "type": "string",
+            "title": "The Task_id Schema",
+            "default": "",
+            "examples": [
+              "7427396226288631"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "loan_application_id": {
+            "$id": "#/items/properties/loan_application_id",
+            "type": "string",
+            "title": "The Loan_application_id Schema",
+            "default": "",
+            "examples": [
+              "1390244480214582"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "reference_id": {
+            "$id": "#/items/properties/reference_id",
+            "type": "null",
+            "title": "The Reference_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "api_download_path": {
+            "$id": "#/items/properties/api_download_path",
+            "type": "string",
+            "title": "The Api_download_path Schema",
+            "default": "",
+            "examples": [
+              "/api/v1/documents/2017149181828326/download"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}
