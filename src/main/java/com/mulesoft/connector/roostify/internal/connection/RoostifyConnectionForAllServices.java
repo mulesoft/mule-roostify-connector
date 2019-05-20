@@ -40,7 +40,7 @@ import static org.mule.runtime.extension.api.annotation.param.ParameterGroup.CON
 
 @Alias("RoostifyConnectionForAllServices")
 public class RoostifyConnectionForAllServices extends RoostifyConnectionProvider {
-    private final static Logger LOGGER = LoggerFactory.getLogger(RoostifyConnectionForAllServices.class);
+    private final static Logger logger = LoggerFactory.getLogger(RoostifyConnectionForAllServices.class);
 
     @ParameterGroup(name = CONNECTION)
     @Placement(order = 1)
@@ -96,7 +96,7 @@ public class RoostifyConnectionForAllServices extends RoostifyConnectionProvider
                 return ConnectionValidationResult.failure(str, new RoostifyConnectorException(response.get().getReasonPhrase(),getError(response.get().getStatusCode())));
             }
         } catch (Exception e) {
-            LOGGER.info("Error happened while validating the connection : " + e);
+            logger.info("Error happened while validating the connection : " + e);
         }
        return ConnectionValidationResult.success();
     }

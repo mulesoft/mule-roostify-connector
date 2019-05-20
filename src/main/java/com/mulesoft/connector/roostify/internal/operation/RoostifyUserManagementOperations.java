@@ -27,16 +27,19 @@ public class RoostifyUserManagementOperations extends ConnectorOperations<Roosti
     public RoostifyUserManagementOperations() {
         super(UserManagementServiceImpl::new);
     }
+
     /**
+     * List all users with their details.
+     *
      * @param configuration Roostify Configuration Object.
-     * @param connection   Roostify connection  instance.
+     * @param connection   Roostify connection instance.
      * @param search    Only lists users that match the given attributes. Param structure is search[attribute]=... Takes a url encoded hash of search parameters.
      * @param page    Indicates the page of the index which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present pagination is disabled.
      * @param count    Indicates the number of records per page returned. When this parameter is not present and page is, it defaults to 100. When both parameters are not present pagination is disabled.
      */
+    @DisplayName(value = "List Users")
     @OutputJsonType(schema= "metadata/listingUsers")
     @Throws({ErrorProvider.class})
-    @DisplayName(value = "Listing users")
     @MediaType(value = javax.ws.rs.core.MediaType.APPLICATION_JSON, strict = false)
     public Result<InputStream, ResponseStatus> listingUsers(@Config RoostifyConfiguration configuration, @Connection RoostifyConnection connection,
                                                             @Optional String page,
@@ -48,12 +51,15 @@ public class RoostifyUserManagementOperations extends ConnectorOperations<Roosti
 
 
     /**
+     * Get details of a single user.
+     *
+     * @param configuration Roostify Configuration Object.
      * @param connection   Roostify connection  instance.
      * @param userId    ID of the user
      */
+    @DisplayName(value = "Retrieve a User")
     @OutputJsonType(schema = "metadata/retrieveUser")
     @Throws({ErrorProvider.class})
-    @DisplayName(value = "Retrieve a user")
     @MediaType(value = javax.ws.rs.core.MediaType.APPLICATION_JSON, strict = false)
     public Result<InputStream, ResponseStatus> retrievingUser(@Config RoostifyConfiguration configuration,@Connection RoostifyConnection connection, String userId) {
         return newExecutionBuilder(configuration, connection)
@@ -61,12 +67,14 @@ public class RoostifyUserManagementOperations extends ConnectorOperations<Roosti
     }
 
     /**
-     * @param connection   Roostify connection  instance.
-     * @param userBody Roostify create user request body
+     * Create a user.
+     *
+     * @param connection   Roostify connection instance.
+     * @param userBody Roostify create user request body.
      */
+    @DisplayName(value = "Create a user")
     @OutputJsonType(schema = "metadata/userDetails")
     @Throws({ErrorProvider.class})
-    @DisplayName(value = "Create a user")
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
     public Result<InputStream, ResponseStatus> createUser(@Config RoostifyConfiguration configuration,@Connection RoostifyConnection connection, @Content @InputJsonType(schema = "metadata/createUser") Map<String,Object> userBody) {
         return newExecutionBuilder(configuration, connection)
@@ -74,10 +82,11 @@ public class RoostifyUserManagementOperations extends ConnectorOperations<Roosti
     }
 
     /**
-     * @param connection   Roostify connection  instance.
-     * @param id    A users ID.
+     * @param configuration Roostify Configuration Object.
+     * @param connection   Roostify connection instance.
+     * @param id    User ID.
      */
-    @DisplayName(value = "Update user")
+    @DisplayName(value = "Update a User")
     @Throws({ErrorProvider.class})
     @MediaType(value = ANY, strict = false)
     public Result<InputStream,ResponseStatus> updateUser(@Config RoostifyConfiguration configuration,@Connection RoostifyConnection connection, @Content @InputJsonType(schema= "metadata/updateUser_request") Map<String,Object> User, String id ) {
@@ -86,10 +95,11 @@ public class RoostifyUserManagementOperations extends ConnectorOperations<Roosti
     }
 
     /**
-     * @param connection   Roostify connection  instance.
-     * @param id    Required. usersDTO ID.
+     * @param configuration Roostify Configuration Object.
+     * @param connection   Roostify connection instance.
+     * @param id    User ID (Required).
      */
-    @DisplayName(value = "Deactivate a user")
+    @DisplayName(value = "Deactivate a User")
     @Throws({ErrorProvider.class})
     @MediaType(value = ANY, strict = false)
     public Result<InputStream,ResponseStatus> cancelOrder(@Config RoostifyConfiguration configuration,@Connection RoostifyConnection connection, String id) {
@@ -98,8 +108,9 @@ public class RoostifyUserManagementOperations extends ConnectorOperations<Roosti
     }
 
     /**
-     * @param connection   Roostify connection  instance.
-     * @param id    Required. usersDTO ID.
+     * @param configuration Roostify Configuration Object.
+     * @param connection   Roostify connection instance.
+     * @param id    User ID (Required).
      */
     @DisplayName(value = "Activate a user")
     @Throws({ErrorProvider.class})

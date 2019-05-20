@@ -24,6 +24,7 @@ public class RoostifyUserSettingsOperations extends ConnectorOperations<Roostify
     public RoostifyUserSettingsOperations() {
         super(UserSettingsServiceImpl::new);
     }
+
     /**
      * Retrieving settings for a particular user also returns the account settings for the account they are on. This reduces complexity by allowing you to make a single request for all a particular users settings.
 
@@ -31,8 +32,8 @@ public class RoostifyUserSettingsOperations extends ConnectorOperations<Roostify
      * @param connection   Roostify connection  instance.
      * @param id    Id of the user whose settings you would like to retrieve
      */
+    @DisplayName(value = "Retrieve a User Settings")
     @OutputJsonType(schema= "metadata/retrieveUserSettings")
-    @DisplayName(value = "Retrieve a user's settings")
     @Throws(ErrorProvider.class)
     @MediaType(value = javax.ws.rs.core.MediaType.APPLICATION_JSON, strict = false)
     public Result<InputStream, ResponseStatus> userSettings(@Config RoostifyConfiguration configuration, @Connection RoostifyConnection connection, String id) {

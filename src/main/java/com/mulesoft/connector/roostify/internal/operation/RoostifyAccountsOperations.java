@@ -28,12 +28,13 @@ public class RoostifyAccountsOperations extends ConnectorOperations<RoostifyConf
     }
 
     /**
+     * Retrieve a list of all accounts.
      * @param configuration Roostify Configuration Object.
-     * @param connection Roostify connection  instance.
-     * @param page       Indicates the page of the index which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present pagination is disabled.
-     * @param count      Indicates the number of records per page returned. When this parameter is not present and page is, it defaults to 100. When both parameters are not present pagination is disabled.
+     * @param connection Roostify connection instance.
+     * @param page       Indicates the page of the index which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present, the pagination is disabled.
+     * @param count      Indicates the number of records per page returned. When this parameter is not present and page is, it defaults to 100. When both parameters are not present, the pagination is disabled.
      */
-    @DisplayName(value = "Listing accounts")
+    @DisplayName(value = "List Accounts")
     @OutputJsonType(schema = "metadata/listingAccounts")
     @Throws({ErrorProvider.class})
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -44,15 +45,16 @@ public class RoostifyAccountsOperations extends ConnectorOperations<RoostifyConf
     }
 
     /**
-     * Retrieving an Account
+     * Roostify users are members of an account. Accounts manages billing, permissions, service integrations, application and workflow customizations, co-branding styles, etc.
+     * You may access the basic information of any account that has an integration with your service.
      *
      * @param configuration Roostify Configuration Object.
-     * @param connection Roostify connection  instance.
-     * @param id         id
+     * @param connection Roostify connection instance.
+     * @param id         ID of the account.
      */
+    @DisplayName(value = "Retrieve an Account")
     @OutputJsonType(schema = "metadata/retrieveAccount")
     @Throws({ErrorProvider.class})
-    @DisplayName(value = "Retrieve an account")
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
 
     public Result<InputStream, ResponseStatus> retrievingAccount(@Config RoostifyConfiguration configuration, @Connection RoostifyConnection connection, String id) {

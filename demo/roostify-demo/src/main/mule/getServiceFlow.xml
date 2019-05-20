@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
 	<flow name="getServiceFlow" doc:id="22d5e989-51a5-4747-af6c-9f42833bfea9" >
 		<http:listener doc:name="8081/getService" doc:id="661216ad-808c-4650-865d-8a7fc491beb7" config-ref="HTTP_Listener_config" path="getService"/>
-		<roostify:retrieve-yur-service doc:name="Retrieve your service" doc:id="24b76130-8381-4bed-938c-b4ed964392fb" config-ref="Roostify_Config"/>
+		<roostify:retrieve-your-service doc:name="Retrieve your service" doc:id="24b76130-8381-4bed-938c-b4ed964392fb" config-ref="Roostify_Config"/>
 		<ee:transform doc:name="Service response" doc:id="af415742-06d9-47b2-8048-563a4f9ce92d" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0

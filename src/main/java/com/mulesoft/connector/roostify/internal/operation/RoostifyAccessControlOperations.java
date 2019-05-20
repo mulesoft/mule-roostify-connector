@@ -33,7 +33,7 @@ public class RoostifyAccessControlOperations extends ConnectorOperations<Roostif
      * @param connection   Roostify connection  instance.
      * @param id    ID or system name of the task. If searching for an id matching the string given yields no results, then a lookup against system name is attempted.
      */
-    @DisplayName(value = "Update an access control group")
+    @DisplayName(value = "Update an Access Control Group")
     @OutputJsonType(schema= "metadata/updateAccessControl_response")
     @Throws({ErrorProvider.class})
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -46,7 +46,7 @@ public class RoostifyAccessControlOperations extends ConnectorOperations<Roostif
      * @param configuration Roostify Configuration Object.
      * @param connection  Roostify connection  instance.
      */
-    @DisplayName(value = "Create an access control group")
+    @DisplayName(value = "Create an Access Control Group")
     @OutputJsonType(schema= "metadata/createAccessControl_response")
     @Throws({ErrorProvider.class})
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)

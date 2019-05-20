@@ -9,7 +9,7 @@ http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule
     </roostify:config>
 
     <flow name="retrieveYourServiceFlow" >
-        <roostify:retrieve-yur-service config-ref="Roostify_Config" />
+        <roostify:retrieve-your-service config-ref="Roostify_Config" />
     </flow>
 
 </mule>

@@ -26,11 +26,11 @@ public class RoostifyWebhooksOperations extends ConnectorOperations<RoostifyConf
 
 	/**
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param page    Indicates the page of the index which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present pagination is disabled.
 	 * @param count    Indicates the number of records per page returned. When this parameter is not present and page is, it defaults to 100. When both parameters are not present pagination is disabled.
 	 */
-	@DisplayName(value = "Listing your webhooks")
+	@DisplayName(value = "List Webhooks")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/listingWebhooks")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -41,10 +41,10 @@ public class RoostifyWebhooksOperations extends ConnectorOperations<RoostifyConf
 
 	/**
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param webhookId    ID of the webhook to retrieve.
 	 */
-	@DisplayName(value = "Retrieve a webhook")
+	@DisplayName(value = "Retrieve a Webhook")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/retrieveWebhook")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -55,9 +55,9 @@ public class RoostifyWebhooksOperations extends ConnectorOperations<RoostifyConf
 
 	/**
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 */
-	@DisplayName(value = "Create a webhook")
+	@DisplayName(value = "Create a Webhook")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/createWebhook_response")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -68,10 +68,10 @@ public class RoostifyWebhooksOperations extends ConnectorOperations<RoostifyConf
 
 	/**
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param webhookId    ID of the webhook to destroy.
 	 */
-	@DisplayName(value = "Delete a webhook")
+	@DisplayName(value = "Delete a Webhook")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/deleteWebhook_response")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)

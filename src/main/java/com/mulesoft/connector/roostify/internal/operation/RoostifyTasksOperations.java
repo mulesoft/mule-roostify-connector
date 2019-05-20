@@ -27,13 +27,15 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Return a list of all tasks and their details.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param loan_application_id    Provide loan application id to search for associated tasks
-	 * @param page    Indicates the page of the index which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present pagination is disabled.
+	 * @param connection   Roostify connection instance.
+	 * @param loan_application_id  Loan application ID to search for associated tasks.
+	 * @param page    Indicates the page number which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present pagination is disabled.
 	 * @param count    Indicates the number of records per page returned. When this parameter is not present and page is, it defaults to 100. When both parameters are not present pagination is disabled.
 	 */
-	@DisplayName(value = "Listing tasks")
+	@DisplayName(value = "Listing Tasks")
 	@Throws({ErrorProvider.class})
 	@OutputJsonType(schema = "metadata/listingTasks")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -44,11 +46,13 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Retrieve a single task details.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param taskId    Id of task
+	 * @param connection   Roostify connection instance.
+	 * @param taskId    ID of task.
 	 */
-	@DisplayName(value = "Retrieve a task")
+	@DisplayName(value = "Retrieve a Task")
 	@OutputJsonType(schema = "metadata/retrieveTask")
 	@Throws({ErrorProvider.class})
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -58,12 +62,14 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Update details of a single task.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param taskId    ID of the task
+	 * @param connection   Roostify connection instance.
+	 * @param taskId    ID of the task.
 	 * @param taskBody Request body for updating task.
 	 */
-	@DisplayName(value = "Update a task")
+	@DisplayName(value = "Update a Task")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/updateTask_response")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -73,11 +79,13 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Create a new task from a form task.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param formTask Request body for creating a task from form task
+	 * @param connection   Roostify connection instance.
+	 * @param formTask Request body for creating a task from a form task.
 	 */
-	@DisplayName(value = "Creating a task from form task")
+	@DisplayName(value = "Create a Task from a Form Task")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/formTask")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -87,11 +95,13 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Create a new task from an approval task.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param approvalTask Request body for creating a task from approval task
+	 * @param connection   Roostify connection instance.
+	 * @param approvalTask Request body for creating a task from an approval task.
 	 */
-	@DisplayName(value = "Creating a task from approval task")
+	@DisplayName(value = "Create a Task from an Approval Task")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/approvalTask")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -101,11 +111,13 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Create a talk from a view-only task.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param viewOnlyTask Request body for creating a task from view only task
+	 * @param connection   Roostify connection instance.
+	 * @param viewOnlyTask Request body for creating a task from a view-only task.
 	 */
-	@DisplayName(value = "Creating a task from view only task")
+	@DisplayName(value = "Create a Task from a View-only Task")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/viewOnlyTask")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -115,11 +127,13 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Create a task from a regular task.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param regularTask Request body for creating a task from view only task
+	 * @param connection   Roostify connection instance.
+	 * @param regularTask Request body for creating a task from a regular task.
 	 */
-	@DisplayName(value = "Creating a task from regular task")
+	@DisplayName(value = "Create a Task from a Regular Task")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/viewOnlyTask")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -129,11 +143,13 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Create a task from a speed-bump task.
+	 *
 	 * @param configuration Roostify Configuration Object.
 	 * @param connection   Roostify connection  instance.
-	 * @param speedBumpTask Request body for creating a task from view only task
+	 * @param speedBumpTask Request body for creating a task from a speed-bump task.
 	 */
-	@DisplayName(value = "Creating a task from speed bump task")
+	@DisplayName(value = "Create a Task from a Speed-bump task")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/viewOnlyTask")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -143,11 +159,13 @@ public class RoostifyTasksOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
+	 * Create a task from a file content task.
+	 *
 	 * @param configuration Roostify Configuration Object.
 	 * @param connection   Roostify connection  instance.
-	 * @param fileContentTask Request body for creating a task from view only task
+	 * @param fileContentTask Request body for creating a task from a file content task.
 	 */
-	@DisplayName(value = "Creating a task from file content task")
+	@DisplayName(value = "Create a Task from a File Content Task")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/viewOnlyTask")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
