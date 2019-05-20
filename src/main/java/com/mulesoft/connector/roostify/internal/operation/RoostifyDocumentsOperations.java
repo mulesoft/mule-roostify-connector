@@ -37,7 +37,7 @@ public class RoostifyDocumentsOperations extends ConnectorOperations<RoostifyCon
      * @param filter    Term for filtering document metadata based presence of reference_id.
 
      */
-    @DisplayName(value = "Listing documents")
+    @DisplayName(value = "List Documents")
     @Throws({ErrorProvider.class})
     @OutputJsonType(schema = "metadata/listingDocuments")
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -47,6 +47,7 @@ public class RoostifyDocumentsOperations extends ConnectorOperations<RoostifyCon
                 .execute(DocumentsService::listingDocuments).withParam(page).withParam(count).withParam(filter).withParam(search);
     }
 
+
     /**
      * Retrieve the metadata for a document.
      *
@@ -54,7 +55,7 @@ public class RoostifyDocumentsOperations extends ConnectorOperations<RoostifyCon
      * @param connection Roostify connection  instance.
      * @param find_id    ID of the document to retrieve.
      */
-    @DisplayName(value = "Retrieve a document")
+    @DisplayName(value = "Retrieve a Document Metadata")
     @OutputJsonType(schema = "metadata/retrieveDocument")
     @Throws({ErrorProvider.class})
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -65,12 +66,13 @@ public class RoostifyDocumentsOperations extends ConnectorOperations<RoostifyCon
 
 
     }
+
     /**
      * @param configuration Roostify Configuration Object.
      * @param connection   Roostify connection  instance.
      * @param id    Required. ID of the document to retrieve.
      */
-    @DisplayName(value = "Download a document")
+    @DisplayName(value = "Download a Document")
     @OutputJsonType(schema= "metadata/downloadDocument")
     @Throws({ErrorProvider.class})
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -81,12 +83,12 @@ public class RoostifyDocumentsOperations extends ConnectorOperations<RoostifyCon
            }
 
     /**
-     * To upload a document, POST the document as JSON to /documents. The file_content should be the base64 encoded bytes of the document.
+     * To upload a document, POST the document as JSON to /documents. The file_content in your payload body should be the base64 encoded bytes of the document.
 
      * @param configuration Roostify Configuration Object.
      * @param connection   Roostify connection  instance.
      */
-    @DisplayName(value = "Upload or create a document ")
+    @DisplayName(value = "Upload or Create a Document ")
     @Throws({ErrorProvider.class})
     @OutputJsonType(schema= "metadata/uploadingORcreatingDocument_response")
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -97,14 +99,13 @@ public class RoostifyDocumentsOperations extends ConnectorOperations<RoostifyCon
 
 
     /**
-     * Updates a documents metadata and returns the documents metadata.
+     * Update a documents metadata and returns the documents metadata.
 
      * @param configuration Roostify Configuration Object.
      * @param connection   Roostify connection  instance.
      * @param id    ID of the document to update.
      */
-
-    @DisplayName(value = "Update a document")
+    @DisplayName(value = "Update a Document Metadata")
     @Throws({ErrorProvider.class})
     @OutputJsonType(schema= "metadata/updateDocument_response")
     @MediaType(value =MediaType.APPLICATION_JSON, strict = false)

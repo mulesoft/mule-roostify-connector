@@ -28,17 +28,18 @@ public class RoostifyLoanApplicationsOperations extends ConnectorOperations<Roos
 	}
 
 	/**
-	 * This will retrieve all loan applications belonging to your account or its descendants. For clients with many loan applications, this may time out if you do not use pagination.
+	 * This retrieves all loan applications belonging to your account or its descendants. For clients with many loan applications, this may time out if you do not use pagination.
+	 *
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param search    Only lists loan applications which match the given attributes. Param structure is search[attribute]=...
 	 * @param page    Indicates the page of the index which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present pagination is disabled.
 	 * @param count    Indicates the number of records per page returned. When this parameter is not present and page is, it defaults to 100. When both parameters are not present pagination is disabled.
-	 * @param created    Filters loan applications based on when loan applications were created. The string must be formatted as two ISO-8601 datestamps seperated by . If the time zone designator is omitted it defaults to UTC.
-	 * @param submitted    Filters loan applications based on when loan applications were submitted. The string must be formatted as two ISO-8601 datestamps seperated by . If the time zone designator is omitted it defaults to UTC.
-	 * @param updated    Filters loan applications based on when loan applications were updated. The string must be formatted as two ISO-8601 datestamps seperated by . If the time zone designator is omitted it defaults to UTC.
+	 * @param created    Filters loan applications based on when loan applications are created. The string must be formatted as two ISO-8601 datestamps separated by '...'. If the time zone designator is omitted it defaults to UTC.
+	 * @param submitted    Filters loan applications based on when loan applications are submitted. The string must be formatted as two ISO-8601 datestamps separated by '...'. If the time zone designator is omitted it defaults to UTC.
+	 * @param updated    Filters loan applications based on when loan applications are updated. The string must be formatted as two ISO-8601 datestamps separated by '...'. If the time zone designator is omitted it defaults to UTC.
 	 */
-	@DisplayName(value = "Listing your loan applications")
+	@DisplayName(value = "List Loan Applications")
 	@OutputJsonType(schema= "metadata/listingLoanApplications")
 	@Throws({ErrorProvider.class})
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -49,11 +50,11 @@ public class RoostifyLoanApplicationsOperations extends ConnectorOperations<Roos
 
 	/**
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param find_id    ID of the loan application to retrieve.
 	 */
+	@DisplayName(value = "Retrieve a Loan Application")
 	@OutputJsonType(schema = "metadata/retrieveLoanApplication")
-	@DisplayName(value = "Retrieve a loan application")
 	@Throws(ErrorProvider.class)
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
 	public Result<InputStream,ResponseStatus> loanApplicationsId(@Config RoostifyConfiguration configuration,@Connection  RoostifyConnection connection, String find_id) {
@@ -63,11 +64,11 @@ public class RoostifyLoanApplicationsOperations extends ConnectorOperations<Roos
 
 	/**
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
-	 * @param referenceId    ID of the loan application to retrieve.
+	 * @param connection   Roostify connection instance.
+	 * @param referenceId  ID of the loan application to retrieve.
 	 */
+	@DisplayName(value = "Retrieve a Loan Application by Reference ID")
 	@OutputJsonType(schema = "metadata/retrieveLoanApplication")
-	@DisplayName(value = "Retrieve a loan application by reference id")
 	@Throws(ErrorProvider.class)
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
 	public Result<InputStream,ResponseStatus> loanApplicationByReferenceId(@Config RoostifyConfiguration configuration,@Connection  RoostifyConnection connection, String referenceId) {
@@ -79,10 +80,10 @@ public class RoostifyLoanApplicationsOperations extends ConnectorOperations<Roos
 	 * Unlike most of the API, the loan applications FNM endpoint returns plaintext instead of JSON. The string returned is a Base64-encoded Fannie Mae file.
 
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param id    ID of the loan application to retrieve.
 	 */
-	@DisplayName(value = "Retrieve a loan application in FNM format")
+	@DisplayName(value = "Retrieve a Loan Application in FNM Format")
 	@Throws(ErrorProvider.class)
 	@MediaType(value = MediaType.TEXT_PLAIN, strict = false)
 	public  Result<InputStream,ResponseStatus>  loanApplicationsFNM(@Config RoostifyConfiguration configuration,@Connection  RoostifyConnection connection, String id) {
@@ -91,13 +92,13 @@ public class RoostifyLoanApplicationsOperations extends ConnectorOperations<Roos
 	}
 
 	/**
-	 * The ability to download a loan application in MISMO format must be requested from your Partner or Client Success Manager
+	 * The ability to download a loan application in MISMO format must be requested from your Partner or Client Success Manager.
 
 	 * @param configuration Roostify Configuration Object.
 	 * @param connection   Roostify connection  instance.
 	 * @param id    ID of the loan application to retrieve.
 	 */
-	@DisplayName(value = "Retrieve a loan application in MISMO format")
+	@DisplayName(value = "Retrieve a Loan Application in MISMO Format")
 	@Throws(ErrorProvider.class)
 	@MediaType(value = MediaType.APPLICATION_XML, strict = false)
 	public  Result<InputStream,ResponseStatus>  loanApplicationsMISMO(@Config RoostifyConfiguration configuration,@Connection  RoostifyConnection connection, String id) {
@@ -106,13 +107,13 @@ public class RoostifyLoanApplicationsOperations extends ConnectorOperations<Roos
 	}
 
 	/**
-	 * Creating a Loan Application must be granted on a service by service basis. Access is denied by default. A Loan Application may be created with any of the attributes listed above as parameters to the API.
+	 * Creating a loan application must be granted on a service by service basis. Access is denied by default. A Loan Application may be created with any of the attributes listed above as parameters to the API.
 
 	 * @param configuration Roostify Configuration Object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param createLoanRequest Create loan request body.
 	 */
-	@DisplayName(value = "Create a loan application")
+	@DisplayName(value = "Create a Loan Application")
 	@OutputJsonType(schema= "metadata/createLoanApplication_response")
 	@Throws(ErrorProvider.class)
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -122,14 +123,14 @@ public class RoostifyLoanApplicationsOperations extends ConnectorOperations<Roos
 	}
 
 	/**
-	 * Updating a Loan Application must be granted on a service by service basis. Access is denied by default.
+	 * Updating a loan application must be granted on a service by service basis. Access is denied by default.
 
 	 * @param configuration Roostify Configuration Object.
 	 * @param connection   Roostify connection  instance.
 	 * @param update_id    ID of the loan application to update.
 	 * @param updateLoanRequest Request body for updating loan application.
 	 */
-	@DisplayName(value = "Update a loan application")
+	@DisplayName(value = "Update a Loan Application")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/updateLoanApplication_response")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)

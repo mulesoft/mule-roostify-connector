@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 
 public class ExceptionHandler {
 
-	private final static Logger LOGGER = LoggerFactory.getLogger(ExceptionHandler.class);
+	private final static Logger logger = LoggerFactory.getLogger(ExceptionHandler.class);
 
 	public static void checkErrorAsync(CompletableFuture<HttpResponse> response) {
 		try {
@@ -32,9 +32,9 @@ public class ExceptionHandler {
 				throw new RoostifyConnectorException(builder.append(dto).toString(), getError(response.get().getStatusCode()));
 			}
 		}catch (InterruptedException e){
-			LOGGER.info("Error : " + e);
+			logger.info("Error : " + e);
 		}catch (ExecutionException e){
-			LOGGER.info("Error : " + e);
+			logger.info("Error : " + e);
 		}
 	}
 

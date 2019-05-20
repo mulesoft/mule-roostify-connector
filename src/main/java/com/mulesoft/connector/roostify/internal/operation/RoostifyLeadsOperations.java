@@ -28,13 +28,13 @@ public class RoostifyLeadsOperations extends ConnectorOperations<RoostifyConfigu
 	public RoostifyLeadsOperations() { super(LeadsServiceImpl::new); }
 
 	/**
-	 * The Leads endpoint will accept parameters to create a Lead in Roostify. Each parameter must be ?whitelisted? or will not be allowed within the system.
+	 * The leads endpoint accepts parameters to create a Lead in Roostify. Each parameter must be whitelisted or it is not allowed within the system.
 	 *
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
-	 * @param createLead   The request bosy for creating a lead.
+	 * @param connection   Roostify connection instance.
+	 * @param createLead   The request body for creating a lead.
 	 */
-	@DisplayName(value = "Creating a lead")
+	@DisplayName(value = "Create a Lead")
 	@OutputJsonType(schema = "metadata/leadResponse")
 	@Throws(ErrorProvider.class)
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -44,13 +44,13 @@ public class RoostifyLeadsOperations extends ConnectorOperations<RoostifyConfigu
 	}
 
 	/**
-	 * The Leads endpoint will accept parameters to create a Lead in Roostify. Each parameter must be ?whitelisted? or will not be allowed within the system.
+	 * The leads endpoint accepts parameters to create a Lead in Roostify. Each parameter must be whitelisted or it is not allowed within the system.
 	 *
 	 * @param configuration Roostify configuration object.
 	 * @param connection   Roostify connection  instance.
-	 * @param leadId   The lead id.
+	 * @param leadId  ID of the lead.
 	 */
-	@DisplayName(value = "Retrieve a lead")
+	@DisplayName(value = "Retrieve a Lead")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema = "metadata/createLead")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)

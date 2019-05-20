@@ -27,10 +27,12 @@ public class RoostifySettingsOperations extends ConnectorOperations<RoostifyConf
     }
 
     /**
+     * Roostify Services are customizable on an account level. The /settings endpoint provides access to the service settings and configurations. These are returned as key/value pairs.
+     * For instance, if Roostify leverages an Integration that requires configurations, these fields, values, and the associated Lender on the Account are returned via this GET request.
      * @param configuration Roostify Configuration Object.
      * @param connection Roostify connection  instance.
      */
-    @DisplayName(value = "Retrieve an integration service setting fields and values")
+    @DisplayName(value = "Retrieve an Integration Service")
     @OutputJsonType(schema = "metadata/retrieveSettings")
     @Throws(ErrorProvider.class)
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)

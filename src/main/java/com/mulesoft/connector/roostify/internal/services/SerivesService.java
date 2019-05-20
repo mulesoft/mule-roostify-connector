@@ -11,5 +11,5 @@ import java.io.InputStream;
 
 public interface SerivesService extends ConnectorService {
 
-	Result<InputStream, ResponseStatus> retrieveYurService();
+	Result<InputStream, ResponseStatus> retrieveYourService();
 }

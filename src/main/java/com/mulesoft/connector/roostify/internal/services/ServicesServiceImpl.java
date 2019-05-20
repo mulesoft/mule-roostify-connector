@@ -28,7 +28,7 @@ public class ServicesServiceImpl extends DefaultConnectorService<RoostifyConfigu
 	}
 
 	@Override
-	public Result<InputStream, ResponseStatus> retrieveYurService() {
+	public Result<InputStream, ResponseStatus> retrieveYourService() {
 		String strUri = getConfig().getAddress() + getConfig().getVersion() + SERVICE;
 		HttpRequest request = getConnection().getHttpRequestBuilder().method(HttpConstants.Method.GET).uri(strUri).build();
 		CompletableFuture<HttpResponse> response = sendAsyncRequest(request,true, getConnection());

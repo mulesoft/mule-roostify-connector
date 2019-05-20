@@ -30,9 +30,9 @@ public class RoostifyMessagesOperations extends ConnectorOperations<RoostifyConf
 
 	/**
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 */
-	@DisplayName(value = "Listing messages")
+	@DisplayName(value = "List Messages")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/listingMessages")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
@@ -44,11 +44,11 @@ public class RoostifyMessagesOperations extends ConnectorOperations<RoostifyConf
 
 	/**
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param messageId    ID of the message to retrieve.
 	 */
+	@DisplayName(value = "Retrieve a Message")
 	@OutputJsonType(schema = "metadata/retrieveMessage")
-	@DisplayName(value = "Retrieve a message")
 	@Throws({ErrorProvider.class})
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
 	public Result<InputStream,ResponseStatus> retrievingMessage(@Config RoostifyConfiguration configuration, @Connection  RoostifyConnection connection, String messageId) {
@@ -57,13 +57,14 @@ public class RoostifyMessagesOperations extends ConnectorOperations<RoostifyConf
 	}
 
 	/**
-	 * When the accounts email and name are filled in, the from address for messages created from this endpoint will use the account name and email address. Otherwise, emails will be sent from an email address similar to no-reply@deliver.roostify.com.
+	 * When the accounts email and name are filled in, the from address for messages created from this endpoint uses the account name and email address.
+	 * Otherwise, emails are sent from an email address similar to no-reply@deliver.roostify.com.
 
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param message Message request body for creating message.
 	 */
-	@DisplayName(value = "Create a message")
+	@DisplayName(value = "Create a Message")
 	@Throws({ErrorProvider.class})
 	@OutputJsonType(schema= "metadata/createMessage_response")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)

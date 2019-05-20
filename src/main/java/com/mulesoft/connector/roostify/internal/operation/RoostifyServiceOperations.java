@@ -25,19 +25,21 @@ public class RoostifyServiceOperations extends ConnectorOperations<RoostifyConfi
         super(ServicesServiceImpl::new);
     }
 
-        /**
-         * This endpoint has no parameters.
-
-         * @param configuration Roostify Configuration Object.
-         * @param connection   Roostify connection  instance.
-         */
-        @DisplayName(value = "Retrieve your service")
+    /**
+     * Applications built on Roostify often need to have configuration or other kinds of data tied to a particular user or account. For instance, if building a product to synchronize loan applications from Roostify to a
+     * loan origination system, you may want to have lenders provide their username for the loan origination system so you can properly assign them. These are considered User Settings.
+     * Account Settings are for data that is shared across a collection of users on an account. Lenders and account admins may set the values for these settings through the Roostify UI.
+     *
+     * @param configuration Roostify Configuration Object.
+     * @param connection   Roostify connection  instance.
+     */
+    @DisplayName(value = "Retrieve a Service")
         @OutputJsonType(schema= "metadata/retrieveService")
         @Throws({ErrorProvider.class})
         @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
-        public Result<InputStream, ResponseStatus> retrieveYurService(@Config RoostifyConfiguration configuration, @Connection RoostifyConnection connection) {
+        public Result<InputStream, ResponseStatus> retrieveYourService(@Config RoostifyConfiguration configuration, @Connection RoostifyConnection connection) {
             return newExecutionBuilder(configuration, connection)
-                    .execute(SerivesService::retrieveYurService);
+                    .execute(SerivesService::retrieveYourService);
         }
     }
 

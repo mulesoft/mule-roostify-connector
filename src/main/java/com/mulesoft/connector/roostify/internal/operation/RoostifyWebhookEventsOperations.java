@@ -26,13 +26,15 @@ public class RoostifyWebhookEventsOperations extends ConnectorOperations<Roostif
 	public RoostifyWebhookEventsOperations() { super(WebhookEventsServiceImpl::new); }
 
 	/**
+	 * Webhook events record every instance in which a webhook was fired for a particular event, and can act as an audit log for all events that occur that are trackable via webhooks.
+	 *
 	 * @param configuration Roostify configuration object.
-	 * @param connection   Roostify connection  instance.
+	 * @param connection   Roostify connection instance.
 	 * @param page    Indicates the page of the index which should be returned. When this parameter is not present and count is, it defaults to 1. When both parameters are not present pagination is disabled.
 	 * @param count    Indicates the number of records per page returned. When this parameter is not present and page is, it defaults to 100. When both parameters are not present pagination is disabled.
 	 * @param created    ISO 8601 DateTime range. Scope the returned results to only webhook events that were created this range of dates.
 	 */
-	@DisplayName(value = "Listing your webhook events")
+	@DisplayName(value = "Listing Webhook Events")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/listingWebhookEvents")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)

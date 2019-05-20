@@ -30,10 +30,12 @@ public class RoostifyStatusUpdateOperations extends ConnectorOperations<Roostify
     }
 
     /**
+     * A status update appears in the Stream that collaborators use to monitor updates to a loan application.
+     *
      * @param configuration Roostify Configuration Object.
-     * @param connection   Roostify connection  instance.
+     * @param connection   Roostify connection instance.
      */
-    @DisplayName(value = "Create a status update")
+    @DisplayName(value = "Create a Status Update")
     @Throws(ErrorProvider.class)
     @OutputJsonType(schema= "metadata/createStatusUpdate_response")
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)

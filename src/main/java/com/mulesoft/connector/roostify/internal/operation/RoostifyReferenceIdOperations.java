@@ -25,18 +25,19 @@ import java.util.Map;
 
 public class RoostifyReferenceIdOperations extends ConnectorOperations<RoostifyConfiguration, RoostifyConnection, ReferenceIdService> {
 
-		public RoostifyReferenceIdOperations() {
+	public RoostifyReferenceIdOperations() {
 			super(ReferenceIdServiceImpl::new);
 		}
+
 	/**
-	 * Reference IDs allow users to work with an external service or integration. Using this route either creates or updates a reference id.
+	 * Reference IDs allow users to work with an external service or integration. Using this route either creates or updates a reference ID.
 
 	 * @param configuration Roostify configuration object.
 	 * @param connection   Roostify connection  instance.
 	 * @param loan_id    ID of the loan application to update.
-	 * @param referenceBody The request body for updating the loan
+	 * @param referenceBody The request body for updating the loan.
 	 */
-	@DisplayName(value = "Creating or updating a reference id")
+	@DisplayName(value = "Create or Update a Reference ID")
 	@Throws(ErrorProvider.class)
 	@OutputJsonType(schema= "metadata/outputReferenceId")
 	@MediaType(value = MediaType.APPLICATION_JSON, strict = false)
