@@ -3,7 +3,7 @@
  */
 package com.mulesoft.connector.roostify.internal.services;
 
-import com.mulesoft.connector.roostify.api.resultObject.ResponseStatus;
+import com.mulesoft.connector.roostify.api.response.ResponseStatus;
 import org.mule.connectors.commons.template.service.ConnectorService;
 import org.mule.runtime.extension.api.runtime.operation.Result;
 

@@ -5,7 +5,7 @@ package com.mulesoft.connector.roostify.internal.services;
 
 import com.mulesoft.connector.roostify.internal.config.RoostifyConfiguration;
 import com.mulesoft.connector.roostify.internal.connection.RoostifyConnection;
-import com.mulesoft.connector.roostify.api.resultObject.ResponseStatus;
+import com.mulesoft.connector.roostify.api.response.ResponseStatus;
 import com.mulesoft.connector.roostify.internal.util.RoostifyUtil;
 import org.mule.connectors.commons.template.service.DefaultConnectorService;
 import org.mule.runtime.extension.api.annotation.param.MediaType;
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static com.mulesoft.connector.roostify.internal.exception.ExceptionHandler.checkErrorAsync;
-import static com.mulesoft.connector.roostify.api.resultObject.AttributesUtil.setResponseAttributes;
+import static com.mulesoft.connector.roostify.api.response.AttributesUtil.setResponseAttributes;
 import static com.mulesoft.connector.roostify.internal.operation.handler.RequestCallingService.sendAsyncRequest;
 import static com.mulesoft.connector.roostify.internal.util.Constants.*;
 import static com.mulesoft.connector.roostify.internal.util.RoostifyUtil.getByteArrayDataOfMap;
@@ -33,7 +33,7 @@ public class AccessControlServiceImpl extends DefaultConnectorService<RoostifyCo
 	}
 
 	@Override
-	public Result<InputStream, ResponseStatus> UpdateAccessControl(Map<String,Object> accessControlGroup, String id) {
+	public Result<InputStream, ResponseStatus> updateAccessControl(Map<String,Object> accessControlGroup, String id) {
 		String strUri = getConfig().getAddress() + getConfig().getVersion() + ACCESS_CONTROL_GROUPS +id;
 		byte[] byteArray = getByteArrayDataOfMap(accessControlGroup);
 		HttpRequest request = getConnection().getHttpRequestBuilder().method(HttpConstants.Method.PUT).uri(strUri).addHeader(CONTENT_TYPE,MediaType.APPLICATION_JSON).entity(new ByteArrayHttpEntity(byteArray))
@@ -46,7 +46,7 @@ public class AccessControlServiceImpl extends DefaultConnectorService<RoostifyCo
 
 
 	@Override
-	public Result<InputStream, ResponseStatus> CreateAccessControl(Map<String,Object> accessControl) {
+	public Result<InputStream, ResponseStatus> createAccessControl(Map<String,Object> accessControl) {
 		String strUri = getConfig().getAddress() + getConfig().getVersion() + ACCESS_CONTROL_GROUPS;
 		byte[] byteArray = getByteArrayDataOfMap(accessControl);
 

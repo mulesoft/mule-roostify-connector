@@ -4,7 +4,7 @@
 package com.mulesoft.connector.roostify.internal.operation;
 
 import com.mulesoft.connector.roostify.internal.config.RoostifyConfiguration;
-import com.mulesoft.connector.roostify.api.resultObject.ResponseStatus;
+import com.mulesoft.connector.roostify.api.response.ResponseStatus;
 import com.mulesoft.connector.roostify.internal.services.LoanApplicationService;
 import com.mulesoft.connector.roostify.internal.services.LoanApplicationServiceImpl;
 import org.mule.connectors.commons.template.operation.ConnectorOperations;

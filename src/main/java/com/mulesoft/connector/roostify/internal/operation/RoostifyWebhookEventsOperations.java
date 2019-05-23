@@ -6,7 +6,7 @@ package com.mulesoft.connector.roostify.internal.operation;
 import com.mulesoft.connector.roostify.internal.config.RoostifyConfiguration;
 import com.mulesoft.connector.roostify.internal.connection.RoostifyConnection;
 import com.mulesoft.connector.roostify.internal.error.ErrorProvider;
-import com.mulesoft.connector.roostify.api.resultObject.ResponseStatus;
+import com.mulesoft.connector.roostify.api.response.ResponseStatus;
 import com.mulesoft.connector.roostify.internal.services.WebhookEventsService;
 import com.mulesoft.connector.roostify.internal.services.WebhookEventsServiceImpl;
 import org.mule.connectors.commons.template.operation.ConnectorOperations;
