@@ -27,7 +27,7 @@ import com.mulesoft.connector.roostify.internal.connection.RoostifyConnection;
  */
 public abstract class RoostifyConnectionProvider extends ConnectorConnectionProvider<RoostifyConnection> implements ConnectionProvider<RoostifyConnection> {
 
-    private final Logger logger = LoggerFactory.getLogger(RoostifyConnectionProvider.class);
+    private static final Logger logger = LoggerFactory.getLogger(RoostifyConnectionProvider.class);
 
     @Override
     public void disconnect(RoostifyConnection connection) {
