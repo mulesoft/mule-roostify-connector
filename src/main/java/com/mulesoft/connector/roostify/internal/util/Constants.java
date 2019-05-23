@@ -4,8 +4,6 @@
 
 package com.mulesoft.connector.roostify.internal.util;
 
-import org.mulesoft.common.ext.Diff;
-
 public final class Constants {
 
     public static final String AUTHORIZATION ="Authorization";

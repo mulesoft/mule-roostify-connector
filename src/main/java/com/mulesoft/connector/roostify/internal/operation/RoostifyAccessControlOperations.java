@@ -6,7 +6,7 @@ package com.mulesoft.connector.roostify.internal.operation;
 import com.mulesoft.connector.roostify.internal.config.RoostifyConfiguration;
 import com.mulesoft.connector.roostify.internal.connection.RoostifyConnection;
 import com.mulesoft.connector.roostify.internal.error.ErrorProvider;
-import com.mulesoft.connector.roostify.api.resultObject.ResponseStatus;
+import com.mulesoft.connector.roostify.api.response.ResponseStatus;
 import com.mulesoft.connector.roostify.internal.services.*;
 import org.mule.connectors.commons.template.operation.ConnectorOperations;
 import org.mule.runtime.extension.api.annotation.error.Throws;
@@ -37,9 +37,9 @@ public class RoostifyAccessControlOperations extends ConnectorOperations<Roostif
     @OutputJsonType(schema= "metadata/updateAccessControl_response")
     @Throws({ErrorProvider.class})
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
-    public Result<InputStream, ResponseStatus> UpdateAccessControl(@Config RoostifyConfiguration configuration, @Connection RoostifyConnection connection, @Content @InputJsonType(schema= "metadata/updateAccessControl_request") Map<String,Object> accessControlGroup, String id) {
+    public Result<InputStream, ResponseStatus> updateAccessControl(@Config RoostifyConfiguration configuration, @Connection RoostifyConnection connection, @Content @InputJsonType(schema= "metadata/updateAccessControl_request") Map<String,Object> accessControlGroup, String id) {
         return newExecutionBuilder(configuration, connection)
-                .execute(AccessControlService::UpdateAccessControl).withParam(accessControlGroup).withParam(id);
+                .execute(AccessControlService::updateAccessControl).withParam(accessControlGroup).withParam(id);
     }
 
     /**
@@ -50,9 +50,9 @@ public class RoostifyAccessControlOperations extends ConnectorOperations<Roostif
     @OutputJsonType(schema= "metadata/createAccessControl_response")
     @Throws({ErrorProvider.class})
     @MediaType(value = MediaType.APPLICATION_JSON, strict = false)
-    public Result<InputStream,ResponseStatus> CreateAccessControl(@Config RoostifyConfiguration configuration,@Connection RoostifyConnection connection, @Content @InputJsonType(schema= "metadata/createAccessControl_request") Map<String,Object> accessControl) {
+    public Result<InputStream,ResponseStatus> createAccessControl(@Config RoostifyConfiguration configuration,@Connection RoostifyConnection connection, @Content @InputJsonType(schema= "metadata/createAccessControl_request") Map<String,Object> accessControl) {
         return newExecutionBuilder(configuration, connection)
-                .execute(AccessControlService::CreateAccessControl).withParam(accessControl);
+                .execute(AccessControlService::createAccessControl).withParam(accessControl);
     }
 
 }

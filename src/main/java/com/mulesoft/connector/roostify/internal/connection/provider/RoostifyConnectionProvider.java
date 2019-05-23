@@ -27,14 +27,14 @@ import com.mulesoft.connector.roostify.internal.connection.RoostifyConnection;
  */
 public abstract class RoostifyConnectionProvider extends ConnectorConnectionProvider<RoostifyConnection> implements ConnectionProvider<RoostifyConnection> {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(RoostifyConnectionProvider.class);
+    private final Logger logger = LoggerFactory.getLogger(RoostifyConnectionProvider.class);
 
     @Override
     public void disconnect(RoostifyConnection connection) {
         try {
             connection.invalidate();
         } catch (Exception e) {
-            LOGGER.info("Error while disconnecting :", e);
+            logger.info("Error while disconnecting :", e);
         }
     }
 

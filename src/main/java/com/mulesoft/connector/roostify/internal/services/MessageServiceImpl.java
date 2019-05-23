@@ -6,7 +6,7 @@ package com.mulesoft.connector.roostify.internal.services;
 import com.mulesoft.connector.roostify.api.messages.messagesDTO;
 import com.mulesoft.connector.roostify.internal.config.RoostifyConfiguration;
 import com.mulesoft.connector.roostify.internal.connection.RoostifyConnection;
-import com.mulesoft.connector.roostify.api.resultObject.ResponseStatus;
+import com.mulesoft.connector.roostify.api.response.ResponseStatus;
 import com.mulesoft.connector.roostify.internal.util.RoostifyUtil;
 import org.mule.connectors.commons.template.service.DefaultConnectorService;
 import org.mule.runtime.extension.api.annotation.param.MediaType;
@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static com.mulesoft.connector.roostify.internal.exception.ExceptionHandler.checkErrorAsync;
-import static com.mulesoft.connector.roostify.api.resultObject.AttributesUtil.setResponseAttributes;
+import static com.mulesoft.connector.roostify.api.response.AttributesUtil.setResponseAttributes;
 import static com.mulesoft.connector.roostify.internal.operation.handler.RequestCallingService.sendAsyncRequest;
 import static com.mulesoft.connector.roostify.internal.util.Constants.CONTENT_TYPE;
 import static com.mulesoft.connector.roostify.internal.util.RoostifyUtil.getByteArrayDataOfMap;
@@ -46,8 +46,7 @@ public class MessageServiceImpl  extends DefaultConnectorService<RoostifyConfigu
 		messagesDTO dto1 = new messagesDTO();
 		dto1.setMessages(dto);
 		InputStream outputPayload = RoostifyUtil.getInputStreamData(dto1);
-
-		return Result.<InputStream ,ResponseStatus>builder().output(str).attributes(setResponseAttributes(response)).build();
+		return Result.<InputStream ,ResponseStatus>builder().output(outputPayload).attributes(setResponseAttributes(response)).build();
 	}
 
 	@Override

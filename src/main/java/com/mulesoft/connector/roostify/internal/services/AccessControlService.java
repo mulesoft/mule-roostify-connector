@@ -3,7 +3,7 @@
  */
 package com.mulesoft.connector.roostify.internal.services;
 
-import com.mulesoft.connector.roostify.api.resultObject.ResponseStatus;
+import com.mulesoft.connector.roostify.api.response.ResponseStatus;
 import org.mule.connectors.commons.template.service.ConnectorService;
 import org.mule.runtime.extension.api.runtime.operation.Result;
 
@@ -12,6 +12,6 @@ import java.util.Map;
 
 public interface AccessControlService extends ConnectorService {
 
-	Result<InputStream, ResponseStatus> UpdateAccessControl(Map<String,Object> accessControlGroup, String id);
-	Result<InputStream, ResponseStatus> CreateAccessControl(Map<String,Object> accessControl);
+	Result<InputStream, ResponseStatus> updateAccessControl(Map<String,Object> accessControlGroup, String id);
+	Result<InputStream, ResponseStatus> createAccessControl(Map<String,Object> accessControl);
 	}
