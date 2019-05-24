@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
 	<flow name="getUserFlow" doc:id="c0cf2df8-2087-408f-85a4-b5d26d5675ec" >
 		<http:listener doc:name="8081/getUser" doc:id="33f5972a-b219-4b42-8d1f-30c72696f5d6" config-ref="HTTP_Listener_config" path="getUser"/>
-		<roostify:retrieving-user doc:name="Retrieve a user" doc:id="69320b19-f2e5-404a-9a36-35f1f9a60040" config-ref="Roostify_Config" userId="3751897642312789"/>
+		<roostify:retrieving-user doc:name="Retrieve a user" doc:id="69320b19-f2e5-404a-9a36-35f1f9a60040" config-ref="Roostify_Config" userId="#[attributes.queryParams.userId]"/>
 		<ee:transform doc:name="Get user response" doc:id="f6dc90e5-89d8-43a7-933b-a815f0f41b12" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
