@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<flow name="getLoanApplicationFlow" doc:id="27be852e-6be0-4ab7-8860-c71d9864f764" >
 		<http:listener doc:name="8081/getLoan" doc:id="0f7df325-4922-45f4-8a6e-2ccc1966db71" path="getLoan" config-ref="HTTP_Listener_config"/>
-		<roostify:loan-applications-id doc:name="Retrieve a loan application" doc:id="37e1f217-e7ee-48f6-a430-0a26a444d374" config-ref="Roostify_Config" find_id="7264023802837449"/>
+		<roostify:loan-applications-id doc:name="Retrieve a loan application" doc:id="37e1f217-e7ee-48f6-a430-0a26a444d374" config-ref="Roostify_Config" find_id="#[attributes.queryParams.loanId]"/>
 		<ee:transform doc:name="Loan application result" doc:id="ae208fd2-dea5-4f07-86d1-c4eb883dfd75" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0

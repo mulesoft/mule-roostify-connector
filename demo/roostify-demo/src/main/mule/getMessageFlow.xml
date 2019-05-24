@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
 	<flow name="getMessageFlow" doc:id="d0d88d89-2b0a-47b0-8227-1dc74dba7081" >
 		<http:listener doc:name="8081/getMessage" doc:id="9548f875-bee8-45c9-b6f2-1204a257f7c3" config-ref="HTTP_Listener_config" path="getMessage"/>
-		<roostify:retrieving-message doc:name="Retrieve a message" doc:id="054c8519-10d3-4716-a2a5-1b6ee58276bb" config-ref="Roostify_Config" messageId="5451"/>
+		<roostify:retrieving-message doc:name="Retrieve a message" doc:id="054c8519-10d3-4716-a2a5-1b6ee58276bb" config-ref="Roostify_Config" messageId="#[attributes.queryParams.messageId]"/>
 		<ee:transform doc:name="Message response" doc:id="014d85de-351f-4ed5-97f5-5daf3f905e58" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0

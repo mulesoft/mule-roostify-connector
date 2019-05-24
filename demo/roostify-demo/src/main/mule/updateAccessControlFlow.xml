@@ -8,17 +8,7 @@ http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<flow name="updateAccessControlFlow" doc:id="407d6e1b-8b5a-4afb-a9a2-7cf3696d1adb" >
 		<http:listener doc:name="8081/updateAccessControl" doc:id="75d46f4a-93dd-4e42-a847-9aca2f8fcb34" config-ref="HTTP_Listener_config" path="updateAccessControl"/>
-		<set-payload value='#[{
-  "name": "My Access Group",
-  "system_name": "my_acg_group_2",
-  "account_permissions": {
-    "access_control": "none",
-    "configuration": "read_only",
-    "lead": "read_only",
-    "report": "read_only",
-    "user": "read_only"
-  }
-}]' doc:name="Access control request body" doc:id="a91d4cac-bda3-4a8f-a304-f1f7d9e39ed4" />
+		<roostify:update-access-control doc:name="Update an Access Control Group" doc:id="1ee4da4a-a3a3-4826-a6e9-55c76dc5efe1" config-ref="Roostify_Config" id="#[attributes.queryParams.groupId]"/>
 		<ee:transform doc:name="Response body" doc:id="a9e5c142-ab47-4306-bfda-dbaeb766f1ec" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
