@@ -6,7 +6,7 @@ The Roostify Connector will allow to connect to the Roostify application. Almost
 <dependency>
     <groupId>com.mulesoft.connectors</groupId>
     <artifactId>mule-roostify-connector</artifactId>
-    <version>1.0.0-SNPSHOT</version>
+    <version>1.0.0</version>
     <classifier>mule-plugin</classifier>
 </dependency>
 ```
