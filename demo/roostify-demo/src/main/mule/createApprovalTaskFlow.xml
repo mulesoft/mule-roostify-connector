@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="createApprovalTaskFlow" doc:id="df5db2ea-c57e-4b1b-bc42-1c54982c4b7e" >
+		<http:listener doc:name="8081/createApprovalTask" doc:id="04ea464f-4045-49ab-b757-e947ce5a5192" config-ref="HTTP_Listener_config" path="createApprovalTask"/>
+		<roostify:creating-task-from-approval doc:name="Creating a task from approval task" doc:id="ac7ac064-3221-44a0-a0ef-ce2b42b1bf66" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Response body" doc:id="d04d158c-ae1e-4804-b76e-4577b9a29ba2" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

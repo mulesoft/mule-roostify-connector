@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getLeadFlow" doc:id="ff96113d-5f6d-489a-94b5-52ba31efd6f2" >
+		<http:listener doc:name="8081/getLead" doc:id="9fbf8fdb-3ca0-4dc9-996a-bb9a734e71f7" config-ref="HTTP_Listener_config" path="getLead"/>
+		<roostify:get-lead doc:name="Retrieve a lead" doc:id="eccd8593-e242-4788-9163-e37e668247b9" config-ref="Roostify_Config" leadId="#[attributes.queryParams.leadId]"/>
+		<ee:transform doc:name="Get lead response" doc:id="07b86dd6-e25d-4d5a-b54b-1f7ff1548271" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "title": "ListingLoanApplications",
+  "properties": {
+    "loanApplications": {
+      "type": "array",
+      "title": "The Root Schema",
+      "items": {
+        "$id": "#/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "properties": {
+          "id": {
+            "$id": "#/items/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "6459978533160172"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "account_id": {
+            "$id": "#/items/properties/account_id",
+            "type": "string",
+            "title": "The Account_id Schema",
+            "default": "",
+            "examples": [
+              "9059584367234663"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "reference_id": {
+            "$id": "#/items/properties/reference_id",
+            "type": "string",
+            "title": "The Reference_id Schema",
+            "default": "",
+            "examples": [
+              "82472418"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "export_reference_id": {
+            "$id": "#/items/properties/export_reference_id",
+            "type": "null",
+            "title": "The Export_reference_id Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "url": {
+            "$id": "#/items/properties/url",
+            "type": "string",
+            "title": "The Url Schema",
+            "default": "",
+            "examples": [
+              "https://sandbox.roostify.com/la/6459978533160172/start"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "pre_approval": {
+            "$id": "#/items/properties/pre_approval",
+            "type": "null",
+            "title": "The Pre_approval Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "borrower_token": {
+            "$id": "#/items/properties/borrower_token",
+            "type": "null",
+            "title": "The Borrower_token Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "coborrower_token": {
+            "$id": "#/items/properties/coborrower_token",
+            "type": "null",
+            "title": "The Coborrower_token Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "archived_at": {
+            "$id": "#/items/properties/archived_at",
+            "type": "null",
+            "title": "The Archived_at Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "created_at": {
+            "$id": "#/items/properties/created_at",
+            "type": "string",
+            "title": "The Created_at Schema",
+            "default": "",
+            "examples": [
+              "2019-01-29T22:11:02Z"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "started_at": {
+            "$id": "#/items/properties/started_at",
+            "type": "null",
+            "title": "The Started_at Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "updated_at": {
+            "$id": "#/items/properties/updated_at",
+            "type": "string",
+            "title": "The Updated_at Schema",
+            "default": "",
+            "examples": [
+              "2019-02-11T22:17:00Z"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "completed_at": {
+            "$id": "#/items/properties/completed_at",
+            "type": "null",
+            "title": "The Completed_at Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "submitted_at": {
+            "$id": "#/items/properties/submitted_at",
+            "type": "null",
+            "title": "The Submitted_at Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "archived": {
+            "$id": "#/items/properties/archived",
+            "type": "null",
+            "title": "The Archived Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "created": {
+            "$id": "#/items/properties/created",
+            "type": "string",
+            "title": "The Created Schema",
+            "default": "",
+            "examples": [
+              "2019-01-29T14:11:02.762-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "started": {
+            "$id": "#/items/properties/started",
+            "type": "null",
+            "title": "The Started Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "updated": {
+            "$id": "#/items/properties/updated",
+            "type": "string",
+            "title": "The Updated Schema",
+            "default": "",
+            "examples": [
+              "2019-02-11T14:17:00.270-08:00"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "completed": {
+            "$id": "#/items/properties/completed",
+            "type": "null",
+            "title": "The Completed Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          },
+          "submitted": {
+            "$id": "#/items/properties/submitted",
+            "type": "null",
+            "title": "The Submitted Schema",
+            "default": null,
+            "examples": [
+              null
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
+	<flow name="Create-account-in-salesforce-flow" doc:id="0056aaaa-9942-4137-afa6-edfc6c557e70" >
+		<http:listener doc:name="8081/createAccount" doc:id="e205c3ca-c680-4149-ad9b-a51b30761866" config-ref="HTTP_Listener_config" path="createAccount"/>
+		<ee:transform doc:name="Create account request body" doc:id="0af2cd8d-7def-47ce-871b-4d540dbe7002">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+[{
+	Name: payload.f_name ++ " " ++ payload.l_name,
+	Phone: payload.phone,
+	s_email__c: payload.mail,
+	s_first_name__c: payload.f_name,
+	s_last_name__c: payload.l_name,
+	rc_reference_id__c: payload.reference
+}]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<salesforce:create doc:name="Create account in salesforce" doc:id="4feac5f4-a4b9-4582-8241-268ca1acf0b0" config-ref="Salesforce_Config" type="Account"/>
+		<set-variable value="#[payload.id[0]]" doc:name="Save SF account id" doc:id="4f397dcb-30ff-4a2b-8a8e-3a29a4724f8e" variableName="sfid"/>
+		<roostify:listing-accounts doc:name="Get roostify accounts" doc:id="8bfa5e24-da99-41ef-86b3-c17e3e934e8d" config-ref="Roostify_Config" page="1" count="100"/>
+		<ee:transform doc:name="Adding roodtify account into SF" doc:id="f607a071-d7f5-4bf7-9dea-b5b986909312">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+{
+	Id: vars.sfid ,
+	AccountNumber: payload[0].id[0]
+}
+]]></ee:set-payload>
+			</ee:message>
+			<ee:variables />
+		</ee:transform>
+		<salesforce:update-single doc:name="Update account id" doc:id="d86330e5-d44c-4134-a0cf-b07b85fb5de3" config-ref="Salesforce_Config" type="Account">
+		</salesforce:update-single>
+		<flow-ref doc:name="Create user and loan in roostify &amp; SF" doc:id="24b4f293-6511-4c7c-9855-e904e29299bc" name="create-user-in-roostify-flow"/>
+		<ee:transform doc:name="SF updated response" doc:id="fd9745f0-ae88-466f-803a-b08ff894c079" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"Output" : payload,
+	"User Id" : vars.userId,
+	"Loan Id" : vars.loanId,
+	"SF Account Id" : vars.sfid
+}
+]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<sub-flow name="create-user-in-roostify-flow" doc:id="af59b855-c8c4-4cb6-ac39-160e7203ed5b" >
+		<salesforce:query doc:name="Getting account from SF" doc:id="9868508c-d39d-4dda-8b95-8693a766120a" config-ref="Salesforce_Config">
+			<salesforce:salesforce-query >SELECT Id, rc_reference_id__c,AccountNumber, s_email__c, s_first_name__c, s_last_name__c, Phone  FROM Account where Id = ':sfId'</salesforce:salesforce-query>
+			<salesforce:parameters ><![CDATA[#[output application/java
+---
+{
+	"sfId" : vars.sfId
+}]]]></salesforce:parameters>
+		</salesforce:query>
+		<ee:transform doc:name="Converting user data" doc:id="171d18db-6de5-4a97-9540-fabcf68fd499" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	user_role: "borrower",
+	home_phone: payload.Phone[0],
+	reference_id: payload.rc_reference_id__c[0],
+	last_name: payload.s_last_name__c[0],
+	account_id: payload.AccountNumber[0],
+	job_title: "ADMIN",
+	first_name: payload.s_first_name__c[0],
+	email: payload.s_email__c[0]
+}]]></ee:set-payload>
+			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="refId" ><![CDATA[%dw 2.0
+output application/java
+---
+{
+	"refId" : payload.rc_reference_id__c[0]
+}]]></ee:set-variable>
+			</ee:variables>
+		</ee:transform>
+		<roostify:create-user doc:name="Create a user in roostify" doc:id="70006d04-b601-4cf7-a14e-ae6e0a2f41e4" config-ref="Roostify_Config"/>
+		<set-variable value="#[payload.id]" doc:name="Save user Id" doc:id="8c9cc6b6-ef59-42a1-998e-065d4bc3d998" variableName="userId"/>
+		<roostify:creating-loan-application doc:name="Create user loan application" doc:id="5cfc05a7-ecbf-40f8-a59d-3b02a02b0e8a" config-ref="Roostify_Config">
+			<roostify:create-loan-request ><![CDATA[#[output application/json
+---
+{
+	reference_id: vars.refId,
+	application_type: "purchase",
+	loan_amount: 20000,
+	down_payment: 1000,
+	amortization_term: "30"
+}]]]></roostify:create-loan-request>
+		</roostify:creating-loan-application>
+		<set-variable value="#[payload.id]" doc:name="Save loan Id" doc:id="029645c6-b962-4d69-ad61-8759832ccf86" variableName="loanId"/>
+		<roostify:create-update-reference-id doc:name="Update a loan reference id" doc:id="98690d04-8348-4871-b5b2-f9e2388ecc4e" config-ref="Roostify_Config" loan_id="#[vars.loanId]">
+			<roostify:reference-body ><![CDATA[#[{
+  "reference_id": "Test-Loan-123456"
+}]]]></roostify:reference-body>
+		</roostify:create-update-reference-id>
+		<ee:transform doc:name="Convert data into SF" doc:id="1a51303e-7efa-4fbe-9bf1-6514ebaf5d01" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+	Id: vars.sfId,
+	s_loan_Id__c: vars.loanId,
+	rc_user_id__c: vars.userId,
+	rc_user_status__c: "Active",
+	rc_reference_id__c: "Test-Loan-123456"
+}
+]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<salesforce:update-single doc:name="Update single" doc:id="94caaf5d-8f4f-41f4-a728-ce6b526d0b8f" config-ref="Salesforce_Config" type="Account"/>
+	</sub-flow>
+	<flow name="activate-or-deactivate-user-flow" doc:id="4fd5d310-6e46-4058-93c7-55d98a37564f" >
+		<http:listener doc:name="8081/userStatus" doc:id="b015bb93-f24a-4aef-bc92-a4d15a5bbe01" config-ref="HTTP_Listener_config" path="userStatus"/>
+		<set-variable value="#[attributes.queryParams.sfId]" doc:name="Set SF account id" doc:id="70f10f54-e955-4577-9a4b-ceec18465303" variableName="sf_id"/>
+		<roostify:cancel-order doc:name="Deactivate a user in SF" doc:id="c3f62b8e-089d-4331-8b46-4a125dcb911f" config-ref="Roostify_Config" id="#[attributes.queryParams.userId]"/>
+		<ee:transform doc:name="Set user status Inactive" doc:id="dab9b436-a461-4ab0-92c9-7fe20c9d800d" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+	Id : vars.sf_id,
+	rc_user_status__c: "Inactive"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<salesforce:update-single doc:name="Update user status" doc:id="e02766f5-0c6b-43b0-82c2-01e3ae38021c" config-ref="Salesforce_Config" type="Account"/>
+		<ee:transform doc:name="Output response" doc:id="e616c5b7-466a-4c31-82db-1dba7533320b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<error-handler >
+			<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="c410989b-93a1-461a-8a64-602cbcbfd6e3" type="ANY">
+				<roostify:activate-user doc:name="Activate a user" doc:id="3fa33223-3a3d-48df-8b30-4e7b48314992" config-ref="Roostify_Config" id="#[attributes.queryParams.userId]"/>
+				<ee:transform doc:name="Set user status Actice" doc:id="288720a1-6920-4d2e-afa0-7e6b054ec0ff" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+	Id : vars.sf_id,
+	rc_user_status__c: "Active"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+				<salesforce:update-single doc:name="Update user status" doc:id="15aeab59-1895-46b2-a293-4d7eb464f44e" config-ref="Salesforce_Config" type="Account"/>
+				<ee:transform doc:name="Response" doc:id="fcde9f17-f977-427e-99e7-d82a6692c41e" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</on-error-continue>
+		</error-handler>
+	</flow>
+</mule>

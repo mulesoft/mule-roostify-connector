@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getLoanApplicationByRefIdFlow" doc:id="ca233a10-1561-42dd-8695-7c5fe78ddf15" >
+		<http:listener doc:name="8081/getLoanByRefId" doc:id="b5d5416a-d532-48dc-b58b-987015afeeb9" config-ref="HTTP_Listener_config" path="getLoanByRefId"/>
+		<roostify:loan-application-by-reference-id doc:name="Retrieve a loan application by reference id" doc:id="a0ee5243-f452-4184-b6ae-d0798b0eaef3" config-ref="Roostify_Config" referenceId="#[attributes.queryParams.refId]"/>
+		<ee:transform doc:name="Response" doc:id="20940c52-7348-4942-a84f-52cd33e1f866" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

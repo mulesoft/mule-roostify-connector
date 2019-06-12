@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="updateLoanApplicationFlow" doc:id="4c66c8e4-b877-4295-9571-22dcb9204e20" >
+		<http:listener doc:name="8081/updateLoan" doc:id="8625a52d-1720-48c6-9604-96dd1e8eab6a" config-ref="HTTP_Listener_config" path="updateLoan"/>
+		<roostify:updating-loan-application doc:name="Update a loan application" doc:id="b7bf0ca0-5826-4200-b077-6f6f604b5abb" config-ref="Roostify_Config" update_id="#[attributes.queryParams.loanId]"/>
+		<ee:transform doc:name="Update loan response" doc:id="1c4d3fbc-3557-4fd8-af88-30e12a6b3bb4" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

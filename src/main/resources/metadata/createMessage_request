@@ -1,0 +1,49 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "CreateMessageRequest",
+  "properties": {
+    "sender_email": {
+      "$id": "#/properties/sender_email",
+      "type": "string",
+      "title": "The Sender_email Schema",
+      "default": "",
+      "examples": [
+        "example@roostify.com"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "subject": {
+      "$id": "#/properties/subject",
+      "type": "string",
+      "title": "The Subject Schema",
+      "default": "",
+      "examples": [
+        "To the great unknown"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "content": {
+      "$id": "#/properties/content",
+      "type": "string",
+      "title": "The Content Schema",
+      "default": "",
+      "examples": [
+        "Message in a bottle"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "loan_application_id": {
+      "$id": "#/properties/loan_application_id",
+      "type": "string",
+      "title": "The Loan_application_id Schema",
+      "default": "",
+      "examples": [
+        "6459978533160172"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "UploadOrCreateDocumentResponse",
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "title": "The Id Schema",
+      "default": "",
+      "examples": [
+        "5527524961376661"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "task_id": {
+      "$id": "#/properties/task_id",
+      "type": "string",
+      "title": "The Task_id Schema",
+      "default": "",
+      "examples": [
+        "7427396226288631"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "loan_application_id": {
+      "$id": "#/properties/loan_application_id",
+      "type": "string",
+      "title": "The Loan_application_id Schema",
+      "default": "",
+      "examples": [
+        "1390244480214582"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "loan_application_reference_id": {
+      "$id": "#/properties/loan_application_reference_id",
+      "type": "string",
+      "title": "The Loan_application_reference_id Schema",
+      "default": "",
+      "examples": [
+        "82472418"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "reference_id": {
+      "$id": "#/properties/reference_id",
+      "type": "null",
+      "title": "The Reference_id Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "uploaded": {
+      "$id": "#/properties/uploaded",
+      "type": "string",
+      "title": "The Uploaded Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T10:51:47.103-08:00"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "uploaded_at": {
+      "$id": "#/properties/uploaded_at",
+      "type": "string",
+      "title": "The Uploaded_at Schema",
+      "default": "",
+      "examples": [
+        "2019-02-28T18:51:47Z"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "remote_source_url": {
+      "$id": "#/properties/remote_source_url",
+      "type": "null",
+      "title": "The Remote_source_url Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "api_download_path": {
+      "$id": "#/properties/api_download_path",
+      "type": "string",
+      "title": "The Api_download_path Schema",
+      "default": "",
+      "examples": [
+        "/api/v1/documents/5527524961376661/download"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "Disneyland22"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "file_name": {
+      "$id": "#/properties/file_name",
+      "type": "string",
+      "title": "The File_name Schema",
+      "default": "",
+      "examples": [
+        "disneyland.pdf"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "content_type": {
+      "$id": "#/properties/content_type",
+      "type": "string",
+      "title": "The Content_type Schema",
+      "default": "",
+      "examples": [
+        "text/plain"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "size": {
+      "$id": "#/properties/size",
+      "type": "null",
+      "title": "The Size Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    },
+    "num_of_pages": {
+      "$id": "#/properties/num_of_pages",
+      "type": "null",
+      "title": "The Num_of_pages Schema",
+      "default": null,
+      "examples": [
+        null
+      ]
+    }
+  }
+}

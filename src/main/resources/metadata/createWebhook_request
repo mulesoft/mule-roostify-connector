@@ -1,0 +1,29 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "CreateWebhookRequest",
+  "properties": {
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "title": "The Url Schema",
+      "default": "",
+      "examples": [
+        "https://your-service.example.com/callback-handler"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "event_type": {
+      "$id": "#/properties/event_type",
+      "type": "string",
+      "title": "The Event_type Schema",
+      "default": "",
+      "examples": [
+        "loan_application.created"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

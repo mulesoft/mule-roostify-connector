@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getTaskFlow" doc:id="60b4e40f-9276-47b0-b6f9-8f935aa2e879" >
+		<http:listener doc:name="8081/getTask" doc:id="1112ba5d-3efe-4971-a89f-6a824ca9ab59" config-ref="HTTP_Listener_config" path="getTask"/>
+		<roostify:retrieving-a-task doc:name="Retrieve a task" doc:id="ef241f48-aa4b-41d9-a5ab-6437be3985b7" config-ref="Roostify_Config" taskId="#[attributes.queryParams.taskId]"/>
+		<ee:transform doc:name="Task response" doc:id="c847da8d-b715-41b0-9082-0a4f9a3074d3" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

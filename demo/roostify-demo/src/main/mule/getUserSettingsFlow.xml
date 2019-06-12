@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getUserSettingsFlow" doc:id="a11e0444-fc06-424d-afce-e2cad0613480" >
+		<http:listener doc:name="8081/getUserSettings" doc:id="8cbda766-d617-4588-9daf-a878b5e29471" config-ref="HTTP_Listener_config" path="getUserSettings"/>
+		<roostify:user-settings doc:name="Retrieve a user's settings" doc:id="7d132386-2ce9-4903-9311-f30940cbb35a" config-ref="Roostify_Config" id="#[attributes.queryParams.userId]"/>
+		<ee:transform doc:name="Transform Message" doc:id="be9e08be-e947-4026-89ea-1f461f709146" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

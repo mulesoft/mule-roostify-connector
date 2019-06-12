@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="deaActivateUserFlow" doc:id="99cd9d3a-2798-494b-bd43-250f533df199" >
+		<http:listener doc:name="8081/deactiveUser" doc:id="f44e8590-35e4-4295-9d99-b9eb21f5cefe" config-ref="HTTP_Listener_config" path="deactiveUser"/>
+		<roostify:cancel-order doc:name="Deactivate a user" doc:id="4e9aafb9-bb61-460d-8762-a842a35428e2" config-ref="Roostify_Config" id="#[attributes.queryParams.userId]"/>
+		<ee:transform doc:name="Deactive user response" doc:id="bacf2261-8d2d-445a-935d-2ac2395750a4" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -1,0 +1,23 @@
+ {
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "userDetailsDTO",
+   "properties": {
+     "id": {
+       "$id": "#/properties/id",
+       "type": "string"
+     },
+     "created": {
+       "$id": "#/properties/created",
+       "type": "string"
+     },
+     "created_at": {
+       "$id": "#/properties/created_at",
+       "type": "string"
+     }
+   }
+  }
+
+

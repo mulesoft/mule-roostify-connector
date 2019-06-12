@@ -1,0 +1,104 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "UpdateUserRequest",
+  "required": [
+    "user_role",
+    "first_name",
+    "last_name",
+    "email"
+  ],
+  "properties": {
+    "user_role": {
+      "$id": "#/properties/user_role",
+      "type": "string",
+      "title": "The User_role Schema",
+      "default": "",
+      "examples": [
+        "borrower123"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "job_title": {
+      "$id": "#/properties/job_title",
+      "type": "string",
+      "title": "The Job_title Schema",
+      "default": "",
+      "examples": [
+        "assistant1"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "admin": {
+      "$id": "#/properties/admin",
+      "type": "boolean",
+      "title": "The Admin Schema",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "first_name": {
+      "$id": "#/properties/first_name",
+      "type": "string",
+      "title": "The First_name Schema",
+      "default": "",
+      "examples": [
+        "John"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "last_name": {
+      "$id": "#/properties/last_name",
+      "type": "string",
+      "title": "The Last_name Schema",
+      "default": "",
+      "examples": [
+        "Doe"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "email": {
+      "$id": "#/properties/email",
+      "type": "string",
+      "title": "The Email Schema",
+      "default": "",
+      "examples": [
+        "jd333444@example.com"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "home_phone": {
+      "$id": "#/properties/home_phone",
+      "type": "string",
+      "title": "The Home_phone Schema",
+      "default": "",
+      "examples": [
+        "2125551234"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "license_number": {
+      "$id": "#/properties/license_number",
+      "type": "string",
+      "title": "The License_number Schema",
+      "default": "",
+      "examples": [
+        "123456789"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "loan_application_id": {
+      "$id": "#/properties/loan_application_id",
+      "type": "string",
+      "title": "The Loan_application_id Schema",
+      "default": "",
+      "examples": [
+        "6459978533160172"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

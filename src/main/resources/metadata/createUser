@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "user_role": {
+      "type": "string",
+      "enum": [
+        "borrower",
+        "coborrower",
+        "lender",
+        "borrower_agent"
+      ],
+      "description": "Determines the global role of the user."
+    },
+    "job_title": {
+      "type": "string",
+      "enum": [
+        "assistant",
+        "processor",
+        "underwriter"
+      ],
+      "default": "null",
+      "description": "Determines the global sub-role of the user."
+    },
+    "admin": {
+      "type": "boolean",
+      "description": "Indicates whether the user should be an admin for the account they are assigned to.",
+      "default": false
+    },
+    "loan_application_id": {
+      "type": "string",
+      "description": "ID of the loan application the user should be assigned to. Ignored unless the user role is borrower or agent."
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "home_phone": {
+      "type": "string"
+    },
+    "license_number": {
+      "type": "string",
+      "description": "The NMLS number of the user to be displayed where applicable. Ignored if the user role is anything other than lender."
+    },
+    "send_invite": {
+      "type": "boolean",
+      "description": "Send the new user an invite email?",
+      "default": false
+    },
+    "account_id": {
+      "type": "string",
+      "description": "Token of the account to which the user should be assigned. Either `account_id` or `account_reference_id` are required to create a user. When both `account_id` and `account_reference_id` are present, only `account_id` will be used to find the user."
+    },
+    "secondary_accounts": {
+      "type": "array",
+      "description": "Multiple Tokens of the other accounts to which the user should be assigned."
+    },
+    "account_reference_id": {
+      "type": "string",
+      "description": "Reference id of the account to which the user should be assigned. Either `account_id` or `account_reference_id` are required to create a user. When both `account_id` and `account_reference_id` are present, only `account_id` will be used to find the user."
+    },
+    "reference_id": {
+      "type": "string",
+      "description": "Arbitrary string used to correlate user to external systems."
+    },
+    "sso_reference_id": {
+      "type": "string",
+      "description": "Reference identifier used for SAML authentication."
+    },
+    "access_control_group": {
+      "type": "object",
+      "properties": {
+        "system_name": {
+          "type": "string",
+          "description": "System name for an existing access control group you want to assign the user to."
+        }
+      },
+      "required": [
+        "system_name"
+      ],
+      "description": "Client must have the access control feature enabled to use this field."
+    }
+  },
+  "required": [
+    "user_role",
+    "first_name",
+    "last_name",
+    "email",
+    "account_id",
+    "account_reference_id"
+  ]
+}

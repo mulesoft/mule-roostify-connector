@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "DownloadDocument",
+  "properties": {
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "Disneyland1233335"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "file_name": {
+      "$id": "#/properties/file_name",
+      "type": "string",
+      "title": "The File_name Schema",
+      "default": "",
+      "examples": [
+        "disneyland.pdf"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "contents": {
+      "$id": "#/properties/contents",
+      "type": "string",
+      "title": "The Contents Schema",
+      "default": "",
+      "examples": [
+        "aGVsbG8gd29ybGQ=\n"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}

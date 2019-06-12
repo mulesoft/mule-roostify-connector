@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="getLoanMISMOFormatFlow" doc:id="51fec733-b7a2-4129-97b4-8f30f6b20f96" >
+		<http:listener doc:name="8081/getLoanMISMO" doc:id="aaa8e573-c97a-40f7-91e3-9e650f471b95" config-ref="HTTP_Listener_config" path="getLoanMISMO"/>
+		<roostify:loan-applications-mismo doc:name="Retrieve a loan application in MISMO format" doc:id="36af6bd6-49d5-4a2c-bf65-c15697e9921c" config-ref="Roostify_Config" id="#[attributes.queryParams.loanId]"/>
+	</flow>
+</mule>

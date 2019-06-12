@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="createSpeedBumpTaskFlow" doc:id="2462d701-5426-45d6-b284-9ee129025c6e" >
+		<http:listener doc:name="8081/createSpeedBumpTask" doc:id="4830c371-6bbb-4f92-8d56-6a458666b70e" config-ref="HTTP_Listener_config" path="createSpeedBumpTask"/>
+		<roostify:creating-speed-bump-task doc:name="Creating a task from speed bump task" doc:id="df0aeaae-bf32-4d94-a31b-96cdcfd22eaf" config-ref="Roostify_Config"/>
+		<ee:transform doc:name="Output response" doc:id="304a7e63-9304-4f32-8a28-b440fe05476a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="getAccountFlow" doc:id="1ae258a3-e34b-4d76-b9fe-c63e34d67e29" >
+		<http:listener doc:name="8081/getAccount" doc:id="99531b04-8e6e-4ad1-9320-6e3c7eed1ec2" config-ref="HTTP_Listener_config" path="getAccount"/>
+		<roostify:retrieving-account doc:name="Retrieve an account" doc:id="163293c9-5de5-45df-8575-0221702fde54" config-ref="Roostify_Config" id="#[attributes.queryParams.accountId]"/>
+		<ee:transform doc:name="Response" doc:id="0b194535-e7e6-4c5a-8693-37893c62968b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

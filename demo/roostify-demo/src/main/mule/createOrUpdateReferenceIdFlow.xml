@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:roostify="http://www.mulesoft.org/schema/mule/roostify" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/roostify http://www.mulesoft.org/schema/mule/roostify/current/mule-roostify.xsd">
+	<flow name="createOrUpdateReferenceIdFlowFlow" doc:id="8e10e8fd-22fe-4526-a477-6e33207196b1" >
+		<http:listener doc:name="8081/createUpdateReferenceId" doc:id="9427840b-add1-4846-a880-503483bd11a0" config-ref="HTTP_Listener_config" path="createUpdateReferenceId"/>
+		<roostify:create-update-reference-id doc:name="Creating or updating a reference id" doc:id="a3416082-3130-4cb5-829c-39d6fbd356a7" config-ref="Roostify_Config" loan_id="7272507693592323">
+			<roostify:reference-body ><![CDATA[#[{
+  "reference_id": "1289762378910"
+}]]]></roostify:reference-body>
+		</roostify:create-update-reference-id>
+		<ee:transform doc:name="Reference id response" doc:id="fbdba1a0-d085-430f-af66-7a4f854df79a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
