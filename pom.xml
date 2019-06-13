@@ -59,9 +59,9 @@
         </dependency>
     </dependencies>
     <scm>
-        <connection>scm:git:git@github.com/integration-industries-salesforce/mule-roostify-connector.git</connection>
-        <developerConnection>scm:git:git@github.com/integration-industries-salesforce/mule-roostify-connector.git</developerConnection>
-        <url>https://git@github.com/integration-industries-salesforce/mule-roostify-connector</url>
+        <connection>scm:git:git@github.com/mulesoft/mule-roostify-connector.git</connection>
+        <developerConnection>scm:git:git@github.com/mulesoft/mule-roostify-connector.git</developerConnection>
+        <url>https://git@github.com/mulesoft/mule-roostify-connector</url>
         <tag>mule-roostify-connector-1.0.0</tag>
     </scm>
     <build>
