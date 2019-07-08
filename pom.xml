@@ -8,7 +8,7 @@
     <artifactId>mule-roostify-connector</artifactId>
     <version>1.0.0</version>
     <packaging>mule-extension</packaging>
-    <name>Roostify Connector</name>
+    <name>Roostify - Mule 4</name>
 
     <parent>
         <groupId>com.mulesoft.connectors</groupId>
